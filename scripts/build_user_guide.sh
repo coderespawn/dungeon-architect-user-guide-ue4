@@ -8,6 +8,7 @@ VERSION=latest
 pandoc -s -S --toc \
    -H $GENDIR/include.html \
    -B $GENDIR/header.html \
+   -B $GENDIR/version.html \
    -A $GENDIR/footer.html \
 	$SOURCE/01_introduction.txt \
 	$SOURCE/02_installation.txt \
