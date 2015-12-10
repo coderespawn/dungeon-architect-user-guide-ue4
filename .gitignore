@@ -9,3 +9,4 @@ Build
 *.opensdf
 *.v12.suo
 builds/
+stage_scripts/
