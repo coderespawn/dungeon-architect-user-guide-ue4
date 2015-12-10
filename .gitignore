@@ -7,4 +7,10 @@ Build
 .DS_Store
 *.sdf
 *.opensdf
+<<<<<<< HEAD
 *.v12.suo
+=======
+*.v12.suo
+builds/
+stage_scripts/
+>>>>>>> dev
