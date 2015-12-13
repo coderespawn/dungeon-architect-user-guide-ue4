@@ -23,7 +23,7 @@
  $(document).ready(function () {
 	 $("#TOC").appendTo("#toc_host");
 	 $("#TOC").attr("data-spy", "affix");
-	 $("#TOC").attr("data-offset-top", "80");
+	 $("#TOC").attr("data-offset-top", "5");
 	$("#TOC").addClass("bs-sidebar");
 	$("#TOC").addClass("hidden-print");
 	 /*
@@ -41,9 +41,22 @@
 
     });
 
-function showProductPane() {
-	$('#product-well').fadeToggle(300);
-}
+// Smooth scroll
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 500);
+        return false;
+      }
+    }
+  });
+});
+
 </script>
 
 <script>
@@ -120,7 +133,6 @@ $(document).ready(function() {
 <div class="row documentationBlock">
 		<div class="col-md-3" id="toc_host">
 
-			<div class="top-buffer alert alert-info"><a href="#">Download as PDF</a></div>
 		</div>
 		<div class="col-md-9" style="font-family: 'Open Sans', sans-serif;">
 <div class="branding-logo">
