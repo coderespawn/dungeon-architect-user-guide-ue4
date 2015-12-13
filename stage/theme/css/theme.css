@@ -17,8 +17,8 @@ code {
 h2, h1 {
  color: #2a6496;
 }
-h1 { border-bottom: 1px solid #666; }
-h2 { border-bottom: 1px solid #ccc; }
+h1 { border-bottom: 1px solid #2a6496; }
+h2 { border-bottom: 1px solid #2a6496; }
 
 .version-number {
 	display: inline;
