@@ -14,7 +14,7 @@ code {
         text-align: center;
         }
 
-h2 {
+h2, h1 {
  color: #2a6496;
 }
 h1 { border-bottom: 1px solid #666; }
@@ -56,12 +56,12 @@ h2 { border-bottom: 1px solid #ccc; }
 #toc_host ul {
         list-style: none;
         font-size: 15px;
-	font-family: 'Open Sans', sans-serif;
+		font-family: 'Open Sans', sans-serif;
         font-weight: normal;
-        padding-left: 25px;
+        padding-left: 0px;
 }
 #toc_host li {
-        margin-top: 3px;
+        margin-top: 0px;
 }
 
 #toc_host ul a {
@@ -106,6 +106,7 @@ h2 { border-bottom: 1px solid #ccc; }
     font-weight: normal;
     margin-top: 50px;
     margin-bottom: -40px;
+	color: #2a6496;
 }
 
 #TOC ul {
@@ -211,7 +212,7 @@ h2 { border-bottom: 1px solid #ccc; }
 .bs-sidebar .nav > li > a:focus {
   text-decoration: none;
   background-color: #f8f8f8;
-  border-right: 1px solid #dbd8e0;
+  border-right: 2px solid #dbd8e0;
 }
 .bs-sidebar .nav > .active > a,
 .bs-sidebar .nav > .active:hover > a,
@@ -219,7 +220,7 @@ h2 { border-bottom: 1px solid #ccc; }
   font-weight: bold;
   color: #2a6496;
   background-color: transparent;
-  border-right: 1px solid #563d7c;
+  border-right: 2px solid #563d7c;
 }
 
 /* Nav: second level (shown on .active) */
