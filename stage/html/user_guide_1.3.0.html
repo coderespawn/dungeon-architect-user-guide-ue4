@@ -141,10 +141,10 @@ $(document).ready(function() {
 <div id="TOC">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#installation">Installation</a><ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#dungeon-actor">Dungeon Actor</a><ul>
 <li><a href="#procedural-generation-parameters">Procedural Generation Parameters</a></li>
 </ul></li>
-<li><a href="#dungeon-actor">Dungeon Actor</a></li>
 </ul>
 </div>
 <h1 id="introduction">Introduction</h1>
@@ -156,6 +156,14 @@ $(document).ready(function() {
 <li>Restart the Unreal Editor (if already open) and verify that Dungeon Architect is enabled by navigating to Window Menu &gt; Plugins. <img src="../assets/images/install_step2.png" alt="Install Step 2" /></li>
 <li>Confirm that Dungeon Architect is visible and enabled <img src="../assets/images/install_step3.png" alt="Install Step 3" /></li>
 </ul>
+<h1 id="dungeon-actor">Dungeon Actor</h1>
+<p>A dungeon actor is used to build your dungeons. Drop a dungeon actor into the scene and reset its transform</p>
+<div class="figure">
+<img src="../assets/images/dugeon_actor_01.png" alt="" />
+
+</div>
+<p>The dungeon actor generate a procedural layout for your dungeon based on the various configuration paramters.<br />
+After the layout has been generated, it spawns meshes, lights, blueprints etc, based on the mappings you have defined in the Theme file. This way you can define what meshes needs to be attached to the floors, walls, ceilings, etc</p>
 <h2 id="procedural-generation-parameters">Procedural Generation Parameters</h2>
 <p>Select the Dungeon Actor and expand the Config structure in the Details window <img src="../assets/images/config_params.png" alt="Config Parameters" /></p>
 <p>The various config parameters determine how the layout of the dungeon is generated procedurally. The default layout generator algorithm is implemented based on the excellent <a href="http://www.reddit.com/r/gamedev/comments/1dlwc4/procedural_dungeon_generation_algorithm_explained/">writeup</a> by TinyKeep’s author Phi Dinh</p>
@@ -175,14 +183,6 @@ $(document).ready(function() {
 <li>Initial Room Radius: Internal Usage. Keep to a low value like 10-15</li>
 <li>Floor Height: Internal Usage. Ignored for now</li>
 </ul>
-<h1 id="dungeon-actor">Dungeon Actor</h1>
-<p>A dungeon actor is used to build your dungeons. Drop a dungeon actor into the scene and reset its transform</p>
-<div class="figure">
-<img src="../assets/images/dugeon_actor_01.png" alt="" />
-
-</div>
-<p>The dungeon actor generate a procedural layout for your dungeon based on the various configuration paramters.<br />
-After the layout has been generated, it spawns meshes, lights, blueprints etc, based on the mappings you have defined in the Theme file. This way you can define what meshes needs to be attached to the floors, walls, ceilings, etc</p>
 <div id="footer">
   &copy; 2015 <a href="http://coderespawn.com/">Code Respawn Technologies Pvt Ltd</a>
 </div>
