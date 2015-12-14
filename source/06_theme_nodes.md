@@ -30,6 +30,8 @@ When you create a new theme asset, the theme graph comes with a set of default m
 
 You can define new marker nodes and build your own hierarcy for advanced theming
 
+Names of custom marker nodes can be changed by double clicking on them, or from the details tab
+
 ###Creating marker nodes
 
 There are several ways to create a new marker node:
@@ -50,6 +52,7 @@ You can create the following visual nodes:
 * **Mesh Node** - Good for spawning static meshes.
 * **Point Light Node** - Spawns point lights anywhere in your dungeon
 * **Spot Light Node** - Spawns spot lights
+* **Particle  Node** - Spawns particle systems
 * **Actor Node** - Spawn any type of actor by specifying it's class
 
 
@@ -108,3 +111,12 @@ Alternatively, right click anywhere in the empty area and expand the `Marker Emi
 Alternatively, these context menu actions are also visible in the Actions tab. Drag and drop visual node action into any empty area in the graph
 
 ![Choose a Marker to emit from the Actions tab](../assets/images/create_marker_emitter_03.png)
+
+###Cycles
+
+Cycles are not allowed when you emit markers as it doesn't make sense to continuously emit markers in an infinite loop
+
+The editor takes care of not allowing cycles and notifies you with a user-friendly message when you attempt to create a connection with a marker emitter that might cause a loop
+
+![Cycles not allowed](../assets/images/marker_node_cycle.jpg)
+
