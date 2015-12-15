@@ -77,5 +77,15 @@ Set the class of the actor you would like to spawn in the **Class Template** fie
 Marker Node
 -----------
 
+![Marker Node Properties](../assets/images/node_prop_marker.png)
+
+You can change the name of a marker node by setting it's **Marker Name** field
+
+
 Marker Emitter Node
 -------------------
+
+![Marker Emitter Node Properties](../assets/images/node_prop_marker_emitter.png)
+
+When you emit a marker, you can apply an offset to the emitted marker in the **Offset** field
+
