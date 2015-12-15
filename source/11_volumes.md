@@ -60,6 +60,7 @@ The **Reversed** flag, if checked, overrides the theme of everything outside of 
 
 **Realtime Update** updates the dungeon as it is moved or scaled giving your immediate visual feedback
 
+Note: When overriding, the themes needs to be designed for the same grid cell size for proper results
 
 Negation Volume
 ---------------
@@ -102,5 +103,4 @@ Example of procedural maps created for a 2-player twin stick RTS game
 ![](../assets/images/vol_mirror_eg_3.jpg)
 ![](../assets/images/vol_mirror_eg_4.jpg)
 ![](../assets/images/vol_mirror_eg_5.jpg)
-
 

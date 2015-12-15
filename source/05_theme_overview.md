@@ -7,18 +7,12 @@ Themes are saved as a separate assets in the Content Browser.  It also has an in
 
 ![An example theme](../assets/images/theme_file_example.jpg)
 
+
+![Themes are used by the Theming Engine](../assets/images/da_design_themes.png)
+
 Create a Theme
 --------------
 To create a new theme, right click in the content browser and choose "Dungeon Theme"
 
 ![Create a dungeon theme](../assets/images/create_dungeon_theme_menu.png)
 
-
-Theme Editor
-------------
-Double click a dungeon theme asset to open it in the `Theme Editor`
-
-![A theme asset file](../assets/images/theme_file_asset.png)
-
-
-![Dungeon Architect Theme Editor](../assets/images/theme_editor_empty.png)

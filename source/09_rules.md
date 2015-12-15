@@ -30,7 +30,7 @@ Open up the blueprint and override the **Select Node** function. This function w
 
 ### Example #1
 
-Here is an example of logic that selects a node only if the sum of their X and Y positions are even numbers (logic for a checkerboard pattern)
+Here is an example of a selection logic that selects a node only if the sum of their X and Y positions are even numbers (logic for a checkerboard pattern)
 
 ![Override function to define logic](../assets/images/selection_rule_05.png)
 
@@ -38,11 +38,11 @@ And the result after applying this rule to the ground node:
 
 ![Custom selection rule attached to a mesh node](../assets/images/selection_rule_06.jpg)
 
-You can add more visual nodes and experiment with the **Consume on Attach** parameter to get very interesting results
+You can add more visual nodes and experiment with the **Consume on Attach** parameter to get interesting results
 
 ![Multiple visual nodes working together](../assets/images/selection_rule_07.jpg)
 
-In the above example, the first node has **Consume on Attach** checked.  So if you blueprint logic selects the node, the sandstone mesh will be inserted and the execution stops.   However if the selection node doesn't select the node, the execution will always proceed to the next node and execute the mesh which inserts a clay brick mesh
+In the above example, the first node has **Consume on Attach** checked.  So if your blueprint logic selects the node, the sandstone mesh will be inserted and the execution stops.   However if the selection node doesn't select the node, the execution will always proceed to the next node and execute the mesh which inserts a clay brick mesh
 
 ![](../assets/images/selection_rule_eg1_1.jpg)
 In the above example, the selection rule is applied to the golden pillar.  But whenever it is selected, it stops execution because the **Consume on Attach** variable is set and doesn't build a ground mesh there.    Unchecking **Consume on Attach** on the first node lets the execution proceed even if it is inserted into the scene
