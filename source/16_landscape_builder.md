@@ -2,7 +2,7 @@ Landscape Builder
 =================
 **Experimental** - Note: This feature is still experimental and not fully supported
 
-This builder build the default Grid based builder and carves out out the landscape around the layout.
+This builder extends the default Grid based builder and carves out out the landscape around the layout.
 
 **Note:** This builder is disabled in the current build as it is still a work in progress
 

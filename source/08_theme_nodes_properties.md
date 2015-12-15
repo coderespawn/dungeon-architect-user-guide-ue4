@@ -22,14 +22,56 @@ The properties that are common to all Visual nodes (Mesh, Blueprints, Lights, Pa
 **Transform Logic:** In the Offset property as seen above, you can define a static offset transformation to move/scale/rotate the visual object from the marker position.  With Transform Logic, you can define blueprint based transformation where you can provide dynamic tranform offsets based on a logic.  For e.g., you might want to rotate/scale/translate a tree randomly to give natural variation instead of having them all face the same direction.  More on this later
 
 ### Mesh Node
+A mesh not lets you place static meshes on the scene
+
+![Mesh Node properties](../assets/images/node_prop_mesh.png)
+
+**Mesh:** Specify the static mesh you would like to use here
+
+**Material Overrides**: Optionally override the material of a mesh. Index property lets you set the sub-mesh index.  Multiple material overrides can be assigned
+
+![Mesh Node Advanced properties](../assets/images/node_prop_mesh2.png)
+
+**Advanced properties**: Modify advanced mesh node properties from here.  Note: The *material overrides* and *static mesh* parameter has to be set in the node's property as described above and not here
+
 
 ### Point Light Node
 
+Place point lights on the scene with this node
+
+![Point Light Node Properties](../assets/images/node_prop_pointlight.png)
+
+Adjust light properties (intensity, shadow, color etc) from the **Point Light** field
+
+
 ### Spot Light Node
+
+Place spot lights on the scene with this node
+
+![Spot Light Node Properties](../assets/images/node_prop_spotlight.png)
+
+Adjust light properties (intensity, shadow, color etc) from the **Point Light** field
+
+Spot lights in the preview window show an arrow indicating the direction the spot light is pointing to
 
 ### Particle Node
 
+Place particle emitters on the scene with this node
+
+![Particle Emitter Node Properties](../assets/images/node_prop_particle.jpg)
+
+Assign the Paritcle system template in the **Particle System** field
+
+
 ### Actor Class Node
+
+You can place any kind of actor in the scene using an **Actor Node**
+
+![Actor Node Properties](../assets/images/node_prop_actor1.png)
+
+Set the class of the actor you would like to spawn in the **Class Template** field
+
+![Actor Node spawning a Reflection Capture Actor](../assets/images/node_prop_actor2.png)
 
 
 Marker Node

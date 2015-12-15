@@ -67,7 +67,7 @@ Dungeon Architect lets you specify offsets to your visual nodes to move/scale/ro
 ![Static node Offset](../assets/images/offset.png)
 
 
-However, if you want a more dynamic way of applying offsets (based on blueprint or C++ logics), you can do so with a *Transform Rule*.  This can be very useful to add variations to your levels for certain props
+However, if you want a more dynamic way of applying offsets (based on blueprint or C++ logic), you can do so with a *Transform Rule*.  This can be very useful to add variations to your levels for certain props
 
 
 ###Using Transform Rules
