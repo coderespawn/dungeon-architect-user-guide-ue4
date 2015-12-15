@@ -14,11 +14,12 @@ code {
         text-align: center;
         }
 
-h2, h1 {
+h1, h2, h3 {
  color: #2a6496;
 }
 h1 { border-bottom: 1px solid #2a6496; }
 h2 { border-bottom: 1px solid #2a6496; }
+h3 { border-bottom: 1px solid #ccc; }
 
 .version-number {
 	display: inline;
@@ -232,6 +233,17 @@ h2 { border-bottom: 1px solid #2a6496; }
   padding-top:    3px;
   padding-bottom: 3px;
   padding-left: 30px;
+  font-size: 90%;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-sidebar .nav .nav .nav {
+  margin-bottom: 8px;
+}
+.bs-sidebar .nav .nav .nav > li > a {
+  padding-top:    3px;
+  padding-bottom: 3px;
+  padding-left: 40px;
   font-size: 90%;
 }
 
