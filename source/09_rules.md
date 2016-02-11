@@ -18,7 +18,7 @@ To assing an existing rule into the node, Check the **Use Selection Logic** prop
 
 You can create new rules by clicking the **+** sign and choosing a path to save you blueprint node
 
-![Create a new Selection Rule](../assets/images/selection_rule_02.png)
+![Create a new Selection Rule](../assets/images/selection_rule_02a.png)
 
 Give your blueprint rule a name and save it somewhere
 
@@ -27,6 +27,10 @@ Give your blueprint rule a name and save it somewhere
 Open up the blueprint and override the **Select Node** function. This function will be called by the engine and the logic you put here will let you decide if the node should to be selected
 
 ![Override function to define logic](../assets/images/selection_rule_04.png)
+
+The selection can be combined with the Affinity varaible by unchecking **Logic Overrides Affinity**
+
+![Combine selection logic with Affinity variable](../assets/images/selection_rule_02b.png)
 
 ### Example #1
 

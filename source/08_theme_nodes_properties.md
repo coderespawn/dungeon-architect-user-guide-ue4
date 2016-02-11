@@ -7,7 +7,7 @@ Visual Nodes
 ------------
 Select a visual node (e.g. a mesh node) and have a look at the details tab:
 
-![Mesh Node properties](../assets/images/mesh_node_properties.png)
+![Mesh Node properties](../assets/images/mesh_node_properties_a.png)
 
 The properties that are common to all Visual nodes (Mesh, Blueprints, Lights, Particle, Sprite etc) are explained below:
 
