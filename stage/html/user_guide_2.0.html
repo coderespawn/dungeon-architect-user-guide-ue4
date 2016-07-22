@@ -664,18 +664,13 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 <h3 id="using-selection-rules">Using Selection Rules</h3>
 <p>To assing an existing rule into the node, Check the <strong>Use Selection Logic</strong> property and select the rule you would like to attach to the node from the dropdown list</p>
 <div class="figure">
-<img src="../assets/images/selection_rule_01.png" alt="Assign an existing Selection Rule" />
+<img src="../assets/images/selection_rule_01a.png" alt="Assign an existing Selection Rule" />
 <p class="caption">Assign an existing Selection Rule</p>
 </div>
-<p>You can create new rules by clicking the <strong>+</strong> sign and choosing a path to save you blueprint node</p>
+<p>Create a new selection rule by creating a new blueprint class derived from the appropriate DungeonSelectorLogic. It should match the builder you are targeting</p>
 <div class="figure">
-<img src="../assets/images/selection_rule_02a.png" alt="Create a new Selection Rule" />
+<img src="../assets/images/create_rule_transform1.png" alt="Create a new Selection Rule" />
 <p class="caption">Create a new Selection Rule</p>
-</div>
-<p>Give your blueprint rule a name and save it somewhere</p>
-<div class="figure">
-<img src="../assets/images/selection_rule_03.png" alt="Create a new Selection Rule Blueprint" />
-<p class="caption">Create a new Selection Rule Blueprint</p>
 </div>
 <p>Open up the blueprint and override the <strong>Select Node</strong> function. This function will be called by the engine and the logic you put here will let you decide if the node should to be selected</p>
 <div class="figure">
@@ -726,18 +721,13 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 <h3 id="using-transform-rules">Using Transform Rules</h3>
 <p>To assing an existing rule into the node, Check the <strong>Use Transform Logic</strong> property and select the rule you would like to attach to the node from the dropdown list</p>
 <div class="figure">
-<img src="../assets/images/transform_rule_01.png" alt="Assign an existing Transform Rule" />
+<img src="../assets/images/transform_rule_01b.png" alt="Assign an existing Transform Rule" />
 <p class="caption">Assign an existing Transform Rule</p>
 </div>
-<p>You can create new rules by clicking the <strong>+</strong> sign and choosing a path to save you blueprint node</p>
+<p>Create a new Transform rule by creating a new blueprint class derived from the appropriate DungeonTransformLogic. It should match the builder you are targeting</p>
 <div class="figure">
-<img src="../assets/images/transform_rule_02.png" alt="Create a new Selection Rule" />
+<img src="../assets/images/transform_rule_01a.png" alt="Create a new Selection Rule" />
 <p class="caption">Create a new Selection Rule</p>
-</div>
-<p>Give your blueprint rule a name and save it somewhere</p>
-<div class="figure">
-<img src="../assets/images/transform_rule_03.png" alt="Create a new Selection Rule Blueprint" />
-<p class="caption">Create a new Selection Rule Blueprint</p>
 </div>
 <p>Open up the blueprint and override the <strong>Get Node Offset</strong> function. This function will be called by the engine and the logic you put here will let you decide on the offset that needs to be applied on this node</p>
 <div class="figure">
