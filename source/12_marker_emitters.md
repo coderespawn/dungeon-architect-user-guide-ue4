@@ -14,16 +14,12 @@ A Marker Emitter is invoked right after the Dungeon Builder emits all the marker
 Creating a Marker Emitter
 -------------------------
 
-Add an existing marker emitter by selecting the Dungeon Actor and navigating to the Details tab
+Create a new Blueprint class derived from DungeonMarkerEmitter
+![Create a new marker emitter](../assets/images/create_marker_emiter_dialog.png)
 
-![Assign an existing marker emitter](../assets/images/marker_emitter_01.png)
+Assign the created blueprint marker emitter to the Dungeon Actor
 
-
-You can create new marker emitter blueprint scripts by clicking the **+** icon next to the Marker Emitter name
-
-![Create a new Marker Emitter](../assets/images/marker_emitter_02.png)
-
-![Save the Marker Emitter blueprint](../assets/images/marker_emitter_03.png)
+![Assign to the Dungeon actor](../assets/images/assign_marker_emitter.png)
 
 Start placing your logic in the blueprint by overriding the **Emit Markers** function
 
