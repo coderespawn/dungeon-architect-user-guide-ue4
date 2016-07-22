@@ -14,15 +14,11 @@ Selection rules gives you more power, when you need it.   In the rule's blueprin
 ###Using Selection Rules
 To assing an existing rule into the node, Check the **Use Selection Logic** property and select the rule you would like to attach to the node from the dropdown list
 
-![Assign an existing Selection Rule](../assets/images/selection_rule_01.png)
+![Assign an existing Selection Rule](../assets/images/selection_rule_01a.png)
 
-You can create new rules by clicking the **+** sign and choosing a path to save you blueprint node
+Create a new selection rule by creating a new blueprint class derived from the appropriate DungeonSelectorLogic.  It should match the builder you are targeting
 
-![Create a new Selection Rule](../assets/images/selection_rule_02a.png)
-
-Give your blueprint rule a name and save it somewhere
-
-![Create a new Selection Rule Blueprint](../assets/images/selection_rule_03.png)
+![Create a new Selection Rule](../assets/images/create_rule_transform1.png)
 
 Open up the blueprint and override the **Select Node** function. This function will be called by the engine and the logic you put here will let you decide if the node should to be selected
 
@@ -77,15 +73,11 @@ However, if you want a more dynamic way of applying offsets (based on blueprint 
 ###Using Transform Rules
 To assing an existing rule into the node, Check the **Use Transform Logic** property and select the rule you would like to attach to the node from the dropdown list
 
-![Assign an existing Transform Rule](../assets/images/transform_rule_01.png)
+![Assign an existing Transform Rule](../assets/images/transform_rule_01b.png)
 
-You can create new rules by clicking the **+** sign and choosing a path to save you blueprint node
+Create a new Transform rule by creating a new blueprint class derived from the appropriate DungeonTransformLogic.  It should match the builder you are targeting
 
-![Create a new Selection Rule](../assets/images/transform_rule_02.png)
-
-Give your blueprint rule a name and save it somewhere
-
-![Create a new Selection Rule Blueprint](../assets/images/transform_rule_03.png)
+![Create a new Selection Rule](../assets/images/transform_rule_01a.png)
 
 Open up the blueprint and override the **Get Node Offset** function. This function will be called by the engine and the logic you put here will let you decide on the offset that needs to be applied on this node
 
