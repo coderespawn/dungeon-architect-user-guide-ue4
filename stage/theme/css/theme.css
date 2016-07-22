@@ -69,6 +69,19 @@ h3 { border-bottom: 1px solid #ccc; }
 
 }
 
+
+#download_pdf {
+	margin:0 auto;
+	text-align:center;
+	margin-top: 10px;
+	color: #2a6496;
+	background-color: #f8f8f8;
+	padding: 5px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	font-weight: normal;
+}
+
 .documentationBlock {
 	font-family: 'Open Sans', sans-serif;
 }
@@ -100,6 +113,24 @@ h3 { border-bottom: 1px solid #ccc; }
 
 .top-buffer {
  margin: 10px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: normal;
+    margin-top: 50px;
+    margin-bottom: -40px;
+	color: #2a6496;
+	border-bottom: 0px !important;
+	text-align: center !important;
+}
+
+.author {
+    font-size: 22px;
+    font-weight: normal;
+	color: #2a6496;
+	border-bottom: 0px !important;
+	text-align: center !important;
 }
 
 .doc-title {

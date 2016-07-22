@@ -6,7 +6,6 @@
   <meta name="generator" content="pandoc" />
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
-    <title>Dungeon Architect User Guide</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../theme/css/bootstrap.min.css">
@@ -14,11 +13,18 @@
   
     <script src="../theme/js/jquery.min.js"></script>
     <script src="../theme/js/bootstrap.min.js"></script>
-  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
+<script>
+
+function getPdfUrl() {
+	return "../pdf/user_guide_1.3.0.pdf";
+}
+
+</script>
 
   <link rel="stylesheet" href="../theme/highlight/styles/tomorrow.css">
   <script src="../theme/highlight/highlight.pack.js"></script>
@@ -26,11 +32,14 @@
 
 <script>
  $(document).ready(function () {
-	 $("#TOC").appendTo("#toc_host");
+	 $("#TOC").prependTo("#toc_host");
 	 $("#TOC").attr("data-spy", "affix");
 	 $("#TOC").attr("data-offset-top", "5");
 	$("#TOC").addClass("bs-sidebar");
 	$("#TOC").addClass("hidden-print");
+	
+	 $("#download_pdf").appendTo("#TOC");
+	
 	 /*
 	*/
         var url = window.location.href;
@@ -134,11 +143,12 @@ $(document).ready(function() {
     });
 
 });
+
 </script>
 
 <div class="row documentationBlock">
 		<div class="col-md-3" id="toc_host">
-
+			<div id="download_pdf"><a href="javascript:document.location.href=getPdfUrl();" target="_blank"><i class="fa fa-file-pdf-o"></i> Download PDF</a></div>
 		</div>
 		<div class="col-md-9" style="font-family: 'Open Sans', sans-serif;">
 <div class="branding-logo">
@@ -149,14 +159,14 @@ $(document).ready(function() {
 			    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Version
 			    <span class="caret"></span></button>
 			    <ul class="dropdown-menu">
-			    				<li><a href="user_guide_1.5.0.html">1.5.0</a></li>
+			    				<li><a href="user_guide_2.0.html">2.0</a></li>
+				<li><a href="user_guide_1.5.0.html">1.5.0</a></li>
 				<li><a href="user_guide_1.4.0.html">1.4.0</a></li>
 				<li><a href="user_guide_1.3.0.html">1.3.0</a></li>
 			    </ul>
 			  </div>
 			  <div class="version-number">1.3.0</div>
 			</div>
-			<div class="doc-title">Dungeon Architect User Guide (Unreal Engine 4)</div>
 <div id="TOC">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
@@ -607,7 +617,7 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 <p class="caption">Multiple visual nodes working together</p>
 </div>
 <p>In the above example, the first node has <strong>Consume on Attach</strong> checked. So if your blueprint logic selects the node, the sandstone mesh will be inserted and the execution stops. However if the selection node doesn’t select the node, the execution will always proceed to the next node and execute the mesh which inserts a clay brick mesh</p>
-<p><img src="../assets/images/selection_rule_eg1_1.jpg" alt="" /> In the above example, the selection rule is applied to the golden pillar. But whenever it is selected, it stops execution because the <strong>Consume on Attach</strong> variable is set and doesn’t build a ground mesh there. Unchecking <strong>Consume on Attach</strong> on the first node lets the execution proceed even if it is inserted into the scene <img src="../assets/images/selection_rule_eg1_2.jpg" alt="" /></p>
+<p><img src="../assets/images/selection_rule_eg1_1.jpg" /> In the above example, the selection rule is applied to the golden pillar. But whenever it is selected, it stops execution because the <strong>Consume on Attach</strong> variable is set and doesn’t build a ground mesh there. Unchecking <strong>Consume on Attach</strong> on the first node lets the execution proceed even if it is inserted into the scene <img src="../assets/images/selection_rule_eg1_2.jpg" /></p>
 <h3 id="example-2">Example #2</h3>
 <p>This example places a stone mesh on the ground, but only if the cell is inside a room (and not a corridor)</p>
 <div class="figure">
@@ -691,7 +701,7 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 <p class="caption">Dungeon Paint Editor Mode</p>
 </div>
 <p>As soon as you switch to the Paint Mode, the viewport shows the layout of your dungeon in Blue</p>
-<p><img src="../assets/images/paint_01.jpg" alt="" /> <img src="../assets/images/paint_02.jpg" alt="Dungeon Paint Editor Mode" /></p>
+<p><img src="../assets/images/paint_01.jpg" /> <img src="../assets/images/paint_02.jpg" alt="Dungeon Paint Editor Mode" /></p>
 <p>There are various tools you could use to paint your dungeons</p>
 <div class="figure">
 <img src="../assets/images/paint_tools.png" alt="Paint tools" />
@@ -701,7 +711,7 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 <p>The paint tool allows you to paint at different heights. Custom painted blocks are Cyan in color</p>
 <p>Paint by holding <em>Left click</em></p>
 <p>Delete a painted block by <em>Shift + Left Click</em></p>
-<p><img src="../assets/images/paint_03.jpg" alt="" /> <img src="../assets/images/paint_04.jpg" alt="" /></p>
+<p><img src="../assets/images/paint_03.jpg" /> <img src="../assets/images/paint_04.jpg" /></p>
 <p>You can adjust the size of the paint brush and change the logical floor height you would like to paint on</p>
 <div class="figure">
 <img src="../assets/images/paint_tool_1.png" alt="Paint Brush Configuration" />
@@ -711,19 +721,19 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 <p>The rectangle tool lets you cover larger areas. Hold and drag to draw a rectangle. Release to commit the changes. Custom painted blocks are Cyan in color</p>
 <p>Paint by holding <em>Left click</em></p>
 <p>Delete a painted block by <em>Shift + Left Click</em></p>
-<p><img src="../assets/images/paint_rect_01.jpg" alt="" /> <img src="../assets/images/paint_rect_02.jpg" alt="" /> <img src="../assets/images/paint_rect_03.jpg" alt="" /> <img src="../assets/images/paint_rect_04.jpg" alt="" /></p>
+<p><img src="../assets/images/paint_rect_01.jpg" /> <img src="../assets/images/paint_rect_02.jpg" /> <img src="../assets/images/paint_rect_03.jpg" /> <img src="../assets/images/paint_rect_04.jpg" /></p>
 <h2 id="border-tool">Border Tool</h2>
 <p>The border tool works similar to the Rectangle tool, paints along the border of the rectangle layed down by the user.</p>
 <p>Hold and drag to draw a rectangle. Release to commit the changes. Custom painted blocks are Cyan in color</p>
 <p>The thickness of the border can be adjusted with the Brush Size property</p>
 <p>You can paint in different height by changing the <em>Floor Index</em> property</p>
 <div class="figure">
-<img src="../assets/images/paint_tool_1.png" alt="" />
+<img src="../assets/images/paint_tool_1.png" />
 
 </div>
 <p>Paint by holding <em>Left click</em></p>
 <p>Delete a painted block by <em>Shift + Left Click</em></p>
-<p><img src="../assets/images/paint_border_01.jpg" alt="" /> <img src="../assets/images/paint_border_02.jpg" alt="" /> <img src="../assets/images/paint_border_03.jpg" alt="" /> <img src="../assets/images/paint_border_04.jpg" alt="" /></p>
+<p><img src="../assets/images/paint_border_01.jpg" /> <img src="../assets/images/paint_border_02.jpg" /> <img src="../assets/images/paint_border_03.jpg" /> <img src="../assets/images/paint_border_04.jpg" /></p>
 <h2 id="manual-painting">Manual Painting</h2>
 <p>If you do not want any procedural content to be generated when you paint your level, then set the <strong>Num Cells</strong> property to <code>0</code> in your Dungeon Actor’s Configuration section</p>
 <div class="figure">
@@ -814,7 +824,7 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 </div>
 <p>Place the volume where you would like to have the layout mirrored. The mirroring would happen along the local X-axis of the volume. You can rotate the volume in steps of 90 degrees (0, 90, 180, 270) to mirror in different directions</p>
 <p>Multiple mirrors can also be placed within the same dungeon</p>
-<p>Example of procedural maps created for a 2-player twin stick RTS game <img src="../assets/images/vol_mirror_eg_1.jpg" alt="" /> <img src="../assets/images/vol_mirror_eg_2.jpg" alt="" /> <img src="../assets/images/vol_mirror_eg_3.jpg" alt="" /> <img src="../assets/images/vol_mirror_eg_4.jpg" alt="" /> <img src="../assets/images/vol_mirror_eg_5.jpg" alt="" /></p>
+<p>Example of procedural maps created for a 2-player twin stick RTS game <img src="../assets/images/vol_mirror_eg_1.jpg" /> <img src="../assets/images/vol_mirror_eg_2.jpg" /> <img src="../assets/images/vol_mirror_eg_3.jpg" /> <img src="../assets/images/vol_mirror_eg_4.jpg" /> <img src="../assets/images/vol_mirror_eg_5.jpg" /></p>
 <h1 id="marker-emitters">Marker Emitters</h1>
 <p>Marker Emitters are blueprint scripts (or C++) that lets you emit your own markers anywhere in the map</p>
 <div class="figure">
@@ -905,7 +915,7 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 </div>
 <h2 id="example-3-1">Example #3</h2>
 <p>Heres another example of a curved roof created over a room using marker emitters</p>
-<p><img src="../assets/images/marker_emitter_eg3_1.jpg" alt="" /> <img src="../assets/images/marker_emitter_eg3_2.jpg" alt="" /> <img src="../assets/images/marker_emitter_eg3_3.jpg" alt="" /></p>
+<p><img src="../assets/images/marker_emitter_eg3_1.jpg" /> <img src="../assets/images/marker_emitter_eg3_2.jpg" /> <img src="../assets/images/marker_emitter_eg3_3.jpg" /></p>
 <h1 id="dungeon-builders">Dungeon Builders</h1>
 <p>The Default dungeon builder used to create the layout is swappable and you can provide your own implementation, as a blueprint script or in C++.</p>
 <div class="figure">

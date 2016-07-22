@@ -21,7 +21,7 @@
 <script>
 
 function getPdfUrl() {
-	return "../pdf/user_guide_1.5.0.pdf";
+	return "../pdf/user_guide_2.0.pdf";
 }
 
 </script>
@@ -165,7 +165,7 @@ $(document).ready(function() {
 				<li><a href="user_guide_1.3.0.html">1.3.0</a></li>
 			    </ul>
 			  </div>
-			  <div class="version-number">1.5.0</div>
+			  <div class="version-number">2.0</div>
 			</div>
 <div id="TOC">
 <ul>
@@ -177,7 +177,19 @@ $(document).ready(function() {
 </ul></li>
 <li><a href="#dungeon-actor">Dungeon Actor</a><ul>
 <li><a href="#properties">Properties</a></li>
-<li><a href="#config-parameters">Config Parameters</a></li>
+</ul></li>
+<li><a href="#dungeon-builders">Dungeon Builders</a><ul>
+<li><a href="#grid-builder">Grid Builder</a><ul>
+<li><a href="#configuration">Configuration</a></li>
+</ul></li>
+<li><a href="#floor-plan-builder">Floor Plan Builder</a><ul>
+<li><a href="#configuration-1">Configuration</a></li>
+</ul></li>
+<li><a href="#snap-builder">Snap Builder</a><ul>
+<li><a href="#configuration-2">Configuration</a></li>
+</ul></li>
+<li><a href="#isaac-builder">Isaac Builder</a></li>
+<li><a href="#theming">Theming</a></li>
 </ul></li>
 <li><a href="#theme-overview">Theme Overview</a><ul>
 <li><a href="#create-a-theme">Create a Theme</a></li>
@@ -243,29 +255,15 @@ $(document).ready(function() {
 <li><a href="#example-2-2">Example #2</a></li>
 <li><a href="#example-3-1">Example #3</a></li>
 </ul></li>
-<li><a href="#dungeon-builders">Dungeon Builders</a><ul>
-<li><a href="#using-a-different-builder">Using a different Builder</a></li>
-<li><a href="#creating-a-new-builder">Creating a new Builder</a></li>
-<li><a href="#theming">Theming</a></li>
-</ul></li>
-<li><a href="#paper-2d-extension">Paper 2D Extension</a><ul>
-<li><a href="#theme-nodes-1">Theme Nodes</a><ul>
-<li><a href="#sprite-node">Sprite Node</a></li>
-<li><a href="#flipbook-node">Flipbook Node</a></li>
-<li><a href="#tile-node">Tile Node</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#cave-builder">Cave Builder</a><ul>
-<li><a href="#using-the-builder">Using the builder</a></li>
-<li><a href="#theming-1">Theming</a></li>
-<li><a href="#d-extension">2D Extension</a></li>
-</ul></li>
-<li><a href="#landscape-builder">Landscape Builder</a></li>
 </ul>
 </div>
 <h1 id="introduction">Introduction</h1>
-<p>Dungeon Architect is a plugin for Unreal Engine 4 Editor that helps in streamlining the level creation process. It allows you to quickly create levels procedurally (or manually) by blocking out volumes and having the plugin build the environment automatically around it. This document introduces you to the various features of Dungeon Architect and guides you through the creation of a simple level</p>
+<p>Dungeon Architect is a plugin for Unreal Engine 4 Editor that helps in streamlining the level creation process. It allows you to quickly create levels procedurally (or manually) by blocking out volumes and having the plugin build the environment automatically around it.</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/4aNgzmibRIs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<p>This document introduces you to the various features of Dungeon Architect and guides you through the creation of a simple level</p>
 <h1 id="installation">Installation</h1>
+<p><strong>Marketplace Installation:</strong> Install the plugin from the marketplace using the launcher as usual</p>
+<p><strong>Manual Installation:</strong> If you have purchased your copy of Dungeon Architect from Code Respawn, you can download the latest build at any time and install it into your project with the following steps</p>
 <ul>
 <li>In your game’s root directory, create a folder named Plugins</li>
 <li>Copy the DungeonArchitect folder found in this archive under Plugin/4.X/ into your game’s plugin folder (which was created in step 1). For example, in the ShooterGame sample demo, the directory structure should look like this: <img src="../assets/images/install_step1.png" alt="Install Step 1" /></li>
@@ -318,20 +316,41 @@ After the layout has been generated, it spawns meshes, lights, blueprints etc, b
 <h2 id="properties">Properties</h2>
 <p>The Dungeon actor lets you perform various actions on your procedural dungeon. Select the Dungeon Actor and have a look at the Dungeon category under the details window</p>
 <div class="figure">
-<img src="../assets/images/dungeon_actor_actions.png" alt="Dungeon Actor Properties" />
+<img src="../assets/images/dungeon_actor_actions_v2.png" alt="Dungeon Actor Properties" />
 <p class="caption">Dungeon Actor Properties</p>
 </div>
 <p><strong>Build Dungeon:</strong> Builds a procedural dungeon. You need to define atleast one theme before you build</p>
 <p><strong>Destroy Dungeon:</strong> Destroys an existing dungeon owned by this actor. If you want to rebuild a dungeon after modifying the theme, there is no need to destroy first and you can directly click build</p>
 <p><strong>Randomize Seed:</strong> A convenience function that changes the seed in the configuration. Changing the seed would completly change the layout of your dungeon</p>
-<p><strong>Edit Builder Config:</strong> If you have specified a custom builder (see below), you can customize it’s exposed parameters</p>
-<p><strong>Config:</strong> The configuration structure. Modify this to tweak the layout of your dungeon. Detailed explanation of each field below</p>
+<p><strong>Builder Class:</strong> A builder is responsible for creating the layout of your dungeon. It contains the method and techniques to design your dungeon. There are different types of builders available</p>
+<ul>
+<li>Grid: Create complex dungeons with this builder. It supports height variations, stairs, rooms and corridors</li>
+<li>FloorPlan: Creates floor plans for your building interiors</li>
+<li>Isaac: Creates dungeon layout similar to the game Binding of Isaac. It also supports decorators to further beautify the layout</li>
+<li>Snap: Create your modules (rooms) in separate levels and this builder generates a dungeon with these modules by stitching them together</li>
+</ul>
+<p><strong>Config:</strong> The configuration category changes based on the structure your select. Hover your mouse pointer over the various fields for more info</p>
 <p><strong>Themes:</strong> A theme file lets you design the look and feel of your dungeon. There’s an interactive editor that lets you design your own themes. You need to specify atleast one theme file before you can build your dungeon (quick start guide comes with many pre-created themes to get you started)</p>
 <p><strong>Marker Emitters:</strong> Dungeon Architect is designed to be modular and it contains many extension points so you can plugin in your own functionality using Blueprints or C++. Marker Emitters is one such extension point that lets you insert marker points in the scene, which your theme can later pick up replace with actors (like meshes, lights etc)</p>
-<h2 id="config-parameters">Config Parameters</h2>
-<p>Select the Dungeon Actor and expand the Config structure in the Details window</p>
+<h1 id="dungeon-builders">Dungeon Builders</h1>
+<p>A Dungeon Builder generates the layout of your dungeon. It contains the method and techniques to design your dungeon. There are multiple builders available and you can also create your own implementation if you wish (in blueprint or C++). This allows Dungeon Architect to be extensible and not restricted to a single dungeon layout technique</p>
 <div class="figure">
-<img src="../assets/images/config_params.png" alt="Dungeon Config Parameters" />
+<img src="../assets/images/da_design_builder.png" alt="Dungeon Builder" />
+<p class="caption">Dungeon Builder</p>
+</div>
+<div class="figure">
+<img src="../assets/images/dungeon_grid_builder_overview.png" alt="Select a dungeon builder" />
+<p class="caption">Select a dungeon builder</p>
+</div>
+<p>Here we explore the various dungeon builders that ship with Dungeon Architect</p>
+<h2 id="grid-builder">Grid Builder</h2>
+<p>This builder creates complex and beautiful dungeons with rooms, cooridors and height variations.</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/dbDak6J61zw?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<p><img src="../assets/images/paint_rect_04.jpg" alt="Grid Builder layout" /> <img src="../assets/images/grid_builder_eg_1.jpg" alt="Grid Builder layout" /> <img src="../assets/images/grid_builder_eg_2.jpg" alt="Grid Builder layout" /> <img src="../assets/images/grid_builder_eg_3.jpg" alt="Grid Builder layout" /> <img src="../assets/images/grid_builder_eg_4.jpg" alt="Grid Builder layout" /> <img src="../assets/images/grid_builder_eg_5.jpg" alt="Grid Builder layout" /></p>
+<h3 id="configuration">Configuration</h3>
+<p>Select the Dungeon Actor from the Details window</p>
+<div class="figure">
+<img src="../assets/images/dungeon_config_grid.png" alt="Dungeon Config Parameters" />
 <p class="caption">Dungeon Config Parameters</p>
 </div>
 <p>The various config parameters determine how the layout of the dungeon is generated procedurally. The default layout generator algorithm is implemented based on the excellent <a href="http://www.reddit.com/r/gamedev/comments/1dlwc4/procedural_dungeon_generation_algorithm_explained/">writeup</a> by TinyKeep’s author Phi Dinh</p>
@@ -350,7 +369,70 @@ After the layout has been generated, it spawns meshes, lights, blueprints etc, b
 <li><strong>Max Allowed Stair Height</strong>: The number of logical floor units the dungeon height can vary. This determines how high the dungeon’s height can vary (e.g. max 2 floors high). Set this value depending on the stair meshes you designer has created. In the sample demo, there are two stair meshes, one 200 units high (1 floor) and another 400 units high (2 floors). So the default is set to 2</li>
 <li><strong>Initial Room Radius</strong>: Internal Usage. Keep to a low value like 10-15</li>
 <li><strong>Floor Height</strong>: Internal Usage. Ignored for now</li>
+<li><strong>Instanced</strong>: Use mesh instancing for lower batch count</li>
+<li><strong>Max Build Time Per Frame</strong>: The dungeon can be built over multiple frames so as to not hang the game (or the editor UI) while it is being built. This value determines how much time is spent on each frame to build the dungeon. Setting it to 0 would build the entire dungeon synchronously in a single frame. Settting to 33ms for eg, would build it over multiple frames. You get a callback notification when the dungeon build is complete</li>
 </ul>
+<h2 id="floor-plan-builder">Floor Plan Builder</h2>
+<p>Create floor plans for your indoor buildings</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/K_iQH4TiVS0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<p><img src="../assets/images/floor_builder_eg_1.jpg" alt="Floor Plan Builder" /> <img src="../assets/images/floor_builder_eg_2.jpg" alt="Floor Plan Builder" /> <img src="../assets/images/floor_builder_eg_3.jpg" alt="Floor Plan Builder" /> <img src="../assets/images/floor_builder_eg_4.jpg" alt="Floor Plan Builder" /> <img src="../assets/images/floor_builder_eg_5.jpg" alt="Floor Plan Builder" /></p>
+<h3 id="configuration-1">Configuration</h3>
+<p>Select the Dungeon Actor from the Details window</p>
+<div class="figure">
+<img src="../assets/images/dungeon_config_floor.png" alt="Dungeon Config Parameters" />
+<p class="caption">Dungeon Config Parameters</p>
+</div>
+<ul>
+<li><p><strong>Seed</strong>: Changing this number would completely change the layout of the dungeon. This is the base random number seed that is used to build the dungeon</p></li>
+<li><p><strong>Building Size</strong>: This is the building size in logical “Grid” units. (see grid size below). Adjust this to change the size of your floor</p></li>
+<li><p><strong>Grid Size</strong>: The size of a tile in the floor map. The floor map is created in a tiled grid. Adjust the size here based on your art assets defined in the theme file</p></li>
+<li><p><strong>Min/Max Size</strong>: The minimum / maximum size of the room, in logical grid cooridnates</p></li>
+<li><p><strong>Hall Width</strong>: Every room is directly or indirectly connected to a hallway. This parameter controls the size of the hallway in grid coordinate</p></li>
+<li><p><strong>Min Room Chunk Area</strong>: Rooms are groups together with other rooms. However, they may be split with a hallway in between them if the combined area is greater than this value</p></li>
+<li><p><strong>Instanced</strong>: Use mesh instancing for lower batch count</p></li>
+<li><p><strong>Max Build Time Per Frame</strong>: The dungeon can be built over multiple frames so as to not hang the game (or the editor UI) while it is being built. This value determines how much time is spent on each frame to build the dungeon. Setting it to 0 would build the entire dungeon synchronously in a single frame. Settting to 33ms for eg, would build it over multiple frames. You get a callback notification when the dungeon build is complete</p></li>
+</ul>
+<h2 id="snap-builder">Snap Builder</h2>
+<p>Create your modules in separate levels. Then have DA create a dungeon with those modules by stiching them together</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/g4IXs_ns1NY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<p><img src="../assets/images/snap_builder_eg_1.jpg" alt="Floor Plan Builder" /> <img src="../assets/images/snap_builder_eg_2.jpg" alt="Floor Plan Builder" /></p>
+<p>The designer would create a module (e.g. a room) in separate levels and assign attachment points (so other modules can connect to it). These attachment points are called SnapDoors. DA would them stitch them together</p>
+<p>With this builder, the artist gets a lot more control on how each module looks. Here are some sample modules, each in its own individual level</p>
+<p><img src="../assets/images/snap_module_1.png" alt="Floor Plan Builder" /> <img src="../assets/images/snap_module_2.png" alt="Floor Plan Builder" /> <img src="../assets/images/snap_module_3.png" alt="Floor Plan Builder" /></p>
+<p>After you have designed a module, drop in the SnapDoor asset where an exit / entrance is expected so other modules can attach to it. Adjust the rotation so the red arrow is aligned with the door exit <img src="../assets/images/snap_module_drop_door.jpg" alt="Add a door to the module" /></p>
+<p>Door snap assets can be created like so: <img src="../assets/images/snap_create_door.png" alt="Create a Snap Door Asset" /></p>
+<p>A Snap Door has its own editor where you define how the door would look <img src="../assets/images/snap_door_editor.png" alt="Snap Door Editor" /></p>
+<p>Sometimes the door might not be connected to another module. In this case, it’s preferable to block the wall off instead of leaving an open space. You can specify that mesh by switching the tab <img src="../assets/images/snap_door_editor_tab.png" alt="Snap Door Editor" /></p>
+<p>Switch to your game level and register all these modules in your dungeon actor and build <img src="../assets/images/snap_module_register.png" alt="Register Snap Modules" /></p>
+<h3 id="configuration-2">Configuration</h3>
+<div class="figure">
+<img src="../assets/images/dungeon_config_snap.png" alt="Snap Dungeon Configuration" />
+<p class="caption">Snap Dungeon Configuration</p>
+</div>
+<ul>
+<li><p><strong>Seed</strong>: Changing this number would completely change the layout of the dungeon. This is the base random number seed that is used to build the dungeon</p></li>
+<li><p><strong>Modules</strong>: Here is where you register your module level assets. DA would use these modules as building blocks to build your dungeon</p></li>
+<li><p><strong>Ignored Module Actor Type</strong>: Since modules are designed in individual level files, there might be actors in the module level which we don’t want to be a part of the module itself (e.g. skybox, directional light, skylight, etc). While spawning a module, DA would ignore actors of the specified types</p></li>
+<li><p><strong>Max Modules</strong>: The no. of modules to spawn in the dungeon. The higher the number, the bigger the dungeon</p></li>
+<li><p><strong>Collision Test Contraction</strong>: When the modules are stitched together, DA makes sure that the newly spawned module would not overlap with any of the existing spawned module. Setting this value to 0 would not spawn a module in locations with even the slightest overlap. Setting to 100 units for e.g., would tolerate an overlap of 100 Unreal units</p></li>
+<li><p><strong>Max Depth</strong>: Determines how deep a chain of modules extend before they are branched out. Set to 0 to ignore this field. Setting to say 10, would stitch modules linearly 10 levels deep, before it branches of into another direction from an earlier module (if it has more than 2 doors)</p></li>
+<li><p><strong>Instanced</strong>: Use mesh instancing for lower batch count</p></li>
+<li><p><strong>Max Build Time Per Frame</strong>: The dungeon can be built over multiple frames so as to not hang the game (or the editor UI) while it is being built. This value determines how much time is spent on each frame to build the dungeon. Setting it to 0 would build the entire dungeon synchronously in a single frame. Settting to 33ms for eg, would build it over multiple frames. You get a callback notification when the dungeon build is complete</p></li>
+</ul>
+<h2 id="isaac-builder">Isaac Builder</h2>
+<p>Generates levels similar to the game Binding of Isaac</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/eRrh-SLcJ0A?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h2 id="theming">Theming</h2>
+<p>To preview your custom builder in a theme file, open the theme in the Theme Editor and go to Properties &gt; Dungeon</p>
+<div class="figure">
+<img src="../assets/images/cave_builder_d.png" alt="Preview Dungeon Properties" />
+<p class="caption">Preview Dungeon Properties</p>
+</div>
+<p>Assign your builder to the <strong>Builder Class</strong> property and the preview viewport should use your builder to build the preview dungeon</p>
+<div class="figure">
+<img src="../assets/images/cave_builder_f.png" alt="Builder Class" />
+<p class="caption">Builder Class</p>
+</div>
 <h1 id="theme-overview">Theme Overview</h1>
 <p>A theme file lets you design the look and feel of you dungeons with an intuitive graph based approach</p>
 <p>Themes are saved as a separate assets in the Content Browser. It also has an interactive editor to help you design beautiful levels</p>
@@ -840,19 +922,11 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 <p>Marker Emitters gives you a lot of flexibility and you can query the dungeon model and emit markers anywhere in the map</p>
 <p>A Marker Emitter is invoked right after the Dungeon Builder emits all the markers for the dungeon (Ground, Wall etc)</p>
 <h2 id="creating-a-marker-emitter">Creating a Marker Emitter</h2>
-<p>Add an existing marker emitter by selecting the Dungeon Actor and navigating to the Details tab</p>
+<p>Create a new Blueprint class derived from DungeonMarkerEmitter <img src="../assets/images/create_marker_emiter_dialog.png" alt="Create a new marker emitter" /></p>
+<p>Assign the created blueprint marker emitter to the Dungeon Actor</p>
 <div class="figure">
-<img src="../assets/images/marker_emitter_01.png" alt="Assign an existing marker emitter" />
-<p class="caption">Assign an existing marker emitter</p>
-</div>
-<p>You can create new marker emitter blueprint scripts by clicking the <strong>+</strong> icon next to the Marker Emitter name</p>
-<div class="figure">
-<img src="../assets/images/marker_emitter_02.png" alt="Create a new Marker Emitter" />
-<p class="caption">Create a new Marker Emitter</p>
-</div>
-<div class="figure">
-<img src="../assets/images/marker_emitter_03.png" alt="Save the Marker Emitter blueprint" />
-<p class="caption">Save the Marker Emitter blueprint</p>
+<img src="../assets/images/assign_marker_emitter.png" alt="Assign to the Dungeon actor" />
+<p class="caption">Assign to the Dungeon actor</p>
 </div>
 <p>Start placing your logic in the blueprint by overriding the <strong>Emit Markers</strong> function</p>
 <div class="figure">
@@ -921,187 +995,6 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 <h2 id="example-3-1">Example #3</h2>
 <p>Heres another example of a curved roof created over a room using marker emitters</p>
 <p><img src="../assets/images/marker_emitter_eg3_1.jpg" /> <img src="../assets/images/marker_emitter_eg3_2.jpg" /> <img src="../assets/images/marker_emitter_eg3_3.jpg" /></p>
-<h1 id="dungeon-builders">Dungeon Builders</h1>
-<p>The Default dungeon builder used to create the layout is swappable and you can provide your own implementation, as a blueprint script or in C++.</p>
-<div class="figure">
-<img src="../assets/images/da_design_builder.png" alt="The Dungeon Builder can be swapped with your own implementation" />
-<p class="caption">The Dungeon Builder can be swapped with your own implementation</p>
-</div>
-<p>This is useful if you want to use your own algorithm for generating the layout of your dungeons.</p>
-<p>You are not limited to a grid based system. Here are some examples of custom builders</p>
-<div class="figure">
-<img src="../assets/images/builder_cave_C.jpg" alt="Cave Builder" />
-<p class="caption">Cave Builder</p>
-</div>
-<div class="figure">
-<img src="../assets/images/builder_cave_B.jpg" alt="Cave Builder" />
-<p class="caption">Cave Builder</p>
-</div>
-<div class="figure">
-<img src="../assets/images/builder_planet.jpg" alt="Planet Builder" />
-<p class="caption">Planet Builder</p>
-</div>
-<div class="figure">
-<img src="../assets/images/builder_paper.jpg" alt="Paper2D Builder" />
-<p class="caption">Paper2D Builder</p>
-</div>
-<h2 id="using-a-different-builder">Using a different Builder</h2>
-<p>To use a different builder to create your dungeon layout, Select the dungeon actor and choose the desired builder class</p>
-<div class="figure">
-<img src="../assets/images/builder_create_A.jpg" alt="Select a builder" />
-<p class="caption">Select a builder</p>
-</div>
-<h2 id="creating-a-new-builder">Creating a new Builder</h2>
-<p>To create a builder, select a Dungeon Actor, and navigate to the Details window</p>
-<p>Click the <strong>+</strong> icon next to the Builder Class property and save the Blueprint</p>
-<div class="figure">
-<img src="../assets/images/builder_create_B.png" alt="Create a new Builder" />
-<p class="caption">Create a new Builder</p>
-</div>
-<div class="figure">
-<img src="../assets/images/builder_create_C.png" alt="Save the builder blueprint" />
-<p class="caption">Save the builder blueprint</p>
-</div>
-<p>Open the Builder blueprint and override the function <strong>Emit Dungeon Markers</strong></p>
-<div class="figure">
-<img src="../assets/images/builder_create_D.png" alt="Override function to place your builder logic" />
-<p class="caption">Override function to place your builder logic</p>
-</div>
-<p>Build your layout and emit markers using the <strong>Emit Marker</strong> node</p>
-<div class="figure">
-<img src="../assets/images/builder_create_E.png" alt="Emit markers into the scene" />
-<p class="caption">Emit markers into the scene</p>
-</div>
-<p>Specify the marker name in the SocketType field</p>
-<div class="figure">
-<img src="../assets/images/builder_create_F.png" alt="Specify a marker name" />
-<p class="caption">Specify a marker name</p>
-</div>
-<p>These marker names will be used in the theme files</p>
-<p>Note: Builders are very low level and you need to emit markers for grounds, walls, doors etc yourself wherever needed. It gives you a lot of power but you need to put in the work to emit the base markers yourself. If you want to build on an existing layout (like the default grid based builder) try <em>Marker Emitters</em> instead.</p>
-<h2 id="theming">Theming</h2>
-<p>To preview your custom builder in a theme file, open the theme in the Theme Editor and go to Properties &gt; Dungeon</p>
-<div class="figure">
-<img src="../assets/images/cave_builder_d.png" alt="Preview Dungeon Properties" />
-<p class="caption">Preview Dungeon Properties</p>
-</div>
-<p>Assign your builder to the <strong>Builder Class</strong> property and the preview viewport should use your builder to build the preview dungeon</p>
-<div class="figure">
-<img src="../assets/images/cave_builder_f.png" alt="Builder Class" />
-<p class="caption">Builder Class</p>
-</div>
-<h1 id="paper-2d-extension">Paper 2D Extension</h1>
-<p>Adds Paper2D support for your 2D games. This extension plugin extends the core DungeonArchitect module by adding Paper2D support to the theme editor and builder</p>
-<div class="figure">
-<img src="../assets/images/plugin_2d.png" alt="Paper2D Extension Plugin" />
-<p class="caption">Paper2D Extension Plugin</p>
-</div>
-<div class="figure">
-<img src="../assets/images/builder_paper.jpg" alt="Paper2D Extensions on the Theme Editor" />
-<p class="caption">Paper2D Extensions on the Theme Editor</p>
-</div>
-<p>The decision to turn this into a separate module (instead of having it in the core module) was to avoid having to link to Paper2D</p>
-<h2 id="theme-nodes-1">Theme Nodes</h2>
-<p>This module extends the Theme Editor with new 2D nodes that work well with the Paper2D plugin</p>
-<div class="figure">
-<img src="../assets/images/paper_context.png" alt="Paper2D Nodes" />
-<p class="caption">Paper2D Nodes</p>
-</div>
-<h3 id="sprite-node">Sprite Node</h3>
-<p>Place static sprites in the scene with this node.</p>
-<div class="figure">
-<img src="../assets/images/paper_node_sprite.png" alt="Sprite Node" />
-<p class="caption">Sprite Node</p>
-</div>
-<p>Create a sprite node and specify the sprite your need from the details window</p>
-<div class="figure">
-<img src="../assets/images/paper_node_sprite2.png" alt="Sprite Node Properties" />
-<p class="caption">Sprite Node Properties</p>
-</div>
-<h3 id="flipbook-node">Flipbook Node</h3>
-<p>Place animated sprites in the scene with this node.</p>
-<div class="figure">
-<img src="../assets/images/paper_node_flipbook.png" alt="Flipbook Node" />
-<p class="caption">Flipbook Node</p>
-</div>
-<p>Set the flipbook animation to use in the details window</p>
-<h3 id="tile-node">Tile Node</h3>
-<p>Select a tile from your tileset to place in the scene. This is a very useful node as it lets you theme your level with a tileset.</p>
-<div class="figure">
-<img src="../assets/images/paper_node_tile1.png" alt="Tile Node" />
-<p class="caption">Tile Node</p>
-</div>
-<p>Set the tileset you intend to use. Once selected, the details window lets you pick a tile from the tileset</p>
-<div class="figure">
-<img src="../assets/images/paper_node_tile2.png" alt="Tile Node Properties" />
-<p class="caption">Tile Node Properties</p>
-</div>
-<p>You can pick tiles of any dimension (e.g. 3x5) and are not restricted to a 1x1 selection</p>
-<div class="figure">
-<img src="../assets/images/paper_node_tile3.png" alt="Tile Selection" />
-<p class="caption">Tile Selection</p>
-</div>
-<p>This is very useful if you have art spanning multiple tiles (e.g. trees)</p>
-<h1 id="cave-builder">Cave Builder</h1>
-<p><strong>Experimental</strong> - Note: This feature is still experimental and not fully supported</p>
-<p>This implementation of a Dungeon Builder uses <a href="http://www.roguebasin.com/index.php?title=Cellular_Automata_Method_for_Generating_Random_Cave-Like_Levels">Cellular Automata</a> to build cave like structures</p>
-<p>The builder is implemented in C++ and available here:</p>
-<p><code>Plugins/DungeonArchitect/Source/DungeonArchitectRuntime/Classes/Dungeon/Builders/DungeonBuilderCave.h</code></p>
-<h2 id="using-the-builder">Using the builder</h2>
-<p>Have a look at the Quick start sample folder <code>DA_Cave_SideScroll</code> for examples</p>
-<p>To use the builder, select your dungeon and choose <code>DungeonBuilderCave</code></p>
-<div class="figure">
-<img src="../assets/images/cave_builder_a.png" alt="Swap out the default builder with the Cave builder" />
-<p class="caption">Swap out the default builder with the Cave builder</p>
-</div>
-<p>Customize the builder properties by selecting the dungeon and choosing <strong>Edit Builder Config</strong></p>
-<div class="figure">
-<img src="../assets/images/cave_builder_b.png" alt="Customize the builder config" />
-<p class="caption">Customize the builder config</p>
-</div>
-<div class="figure">
-<img src="../assets/images/cave_builder_c.png" alt="Cave Builder configuration" />
-<p class="caption">Cave Builder configuration</p>
-</div>
-<h2 id="theming-1">Theming</h2>
-<p>To preview the cave builder in your theme file, go to Properties &gt; Dungeon</p>
-<div class="figure">
-<img src="../assets/images/cave_builder_d.png" alt="Preview Dungeon Properties" />
-<p class="caption">Preview Dungeon Properties</p>
-</div>
-<p>Assign the cave builder to the <strong>Builder Class</strong> property and the preview viewport should use the cave builder to build the preview dungeon</p>
-<div class="figure">
-<img src="../assets/images/cave_builder_f.png" alt="Builder Class" />
-<p class="caption">Builder Class</p>
-</div>
-<p>The Cave Builder emits a marker named <strong>CaveWall</strong> wherever a wall is expected</p>
-<p>Here is a sample theme</p>
-<div class="figure">
-<img src="../assets/images/cave_builder_g.png" alt="Sample Cave theme" />
-<p class="caption">Sample Cave theme</p>
-</div>
-<h2 id="d-extension">2D Extension</h2>
-<p>There is also a 2D Cave builder for your Paper2D games</p>
-<p>For 2D cave samples, have a look at the <code>DA_Cave2D</code> folder in the Quick Start samples</p>
-<div class="figure">
-<img src="../assets/images/cave2d_1.png" alt="Paper2D Cave" />
-<p class="caption">Paper2D Cave</p>
-</div>
-<div class="figure">
-<img src="../assets/images/cave2d_2.png" alt="More Procedural 2D Caves" />
-<p class="caption">More Procedural 2D Caves</p>
-</div>
-<p>The cave is beautified with decorative props using a marker emitter</p>
-<div class="figure">
-<img src="../assets/images/cave2d_3.png" alt="Cave decoration theme" />
-<p class="caption">Cave decoration theme</p>
-</div>
-<p>The marker emitter to decorate the cave: <code>DA_Cave2D/Rules/BPE_TileBeautifier</code></p>
-<h1 id="landscape-builder">Landscape Builder</h1>
-<p><strong>Experimental</strong> - Note: This feature is still experimental and not fully supported</p>
-<p>This builder extends the default Grid based builder and carves out out the landscape around the layout.</p>
-<p><strong>Note:</strong> This builder is disabled in the current build as it is still a work in progress</p>
-<p><img src="../assets/images/builder_ls_1.jpg" alt="Landscape Builder" /> <img src="../assets/images/builder_ls_2.jpg" alt="Landscape Builder" /> <img src="../assets/images/builder_ls_3.jpg" alt="Landscape Builder" /> <img src="../assets/images/builder_ls_4.jpg" alt="Landscape Builder" /></p>
 <div id="footer">
   &copy; 2015 <a href="http://coderespawn.com/">Code Respawn Technologies Pvt Ltd</a>
 </div>
