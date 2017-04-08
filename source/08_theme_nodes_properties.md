@@ -34,6 +34,9 @@ A mesh not lets you place static meshes on the scene
 
 **Advanced properties**: Modify advanced mesh node properties from here.  Note: The *material overrides* and *static mesh* parameter has to be set in the node's property as described above and not here
 
+TIP: Drag a static mesh from the content browser on to the graph window to quickly create a mesh node
+
+![Drag Drop static mesh to create a mesh node](../assets/images/theme_editor_drag_drop.png)
 
 ### Point Light Node
 
@@ -62,6 +65,10 @@ Place particle emitters on the scene with this node
 
 Assign the Paritcle system template in the **Particle System** field
 
+You can drag and drop a particle system from the content browser on to the theme editor to create a new particle system node
+
+![Particle Node Drag Drop](../assets/images/drag_drop_particle_node.png)
+
 
 ### Actor Class Node
 
@@ -72,6 +79,26 @@ You can place any kind of actor in the scene using an **Actor Node**
 Set the class of the actor you would like to spawn in the **Class Template** field
 
 ![Actor Node spawning a Reflection Capture Actor](../assets/images/node_prop_actor2.png)
+
+After you have set a class, you can modify and customize your actor properties.  This allows you to set your actor's public blueprint variables 
+
+![Actor Node spawning a Reflection Capture Actor](../assets/images/actor_node_customize.png)
+
+
+### Destructible Mesh Node
+
+![Destructible Mesh](../assets/images/destruct_mesh_wall.jpg)
+
+Spawn destructible meshes on your scene using this node.   Destructible meshes are a feature in UE4 that lets you fracture a mesh when it is damaged.   You can find more info on creating destructible meshes [here](https://docs.unrealengine.com/latest/INT/Videos/PLZlv_N0_O1gYeJX3xX44yzOb7_kTS7FPM/-gGiEmYj4oE/)
+
+After you have created a destructible mesh, you can assign it to this node from the details window
+
+![Destructible Mesh Details](../assets/images/destruct_mesh_details.png)
+
+The Deathmatch shooter demo uses destructible meshes. The players can shoot at it and break the walls
+
+YOUTUBE(VZIIEQoMp7o)
+
 
 
 Marker Node

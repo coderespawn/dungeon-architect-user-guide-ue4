@@ -59,6 +59,13 @@ This example places a stone mesh on the ground, but only if the cell is inside a
 
 The above Selection logic was attached to the stone mesh ground node so it gets selected only when the ground marker is inside a room
 
+### Example #3
+Ignore nodes that are near other markers.  This is very useful if you don't want to place blocking items near stairs, doors etc
+
+![Query System](../assets/images/query_grid_near_marker_1.png)
+![Query System](../assets/images/query_grid_near_marker_2.png)
+
+
 Transform Rule
 --------------
 

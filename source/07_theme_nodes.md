@@ -54,6 +54,7 @@ You can create the following visual nodes:
 * **Spot Light Node** - Spawns spot lights
 * **Particle  Node** - Spawns particle systems
 * **Actor Node** - Spawn any type of actor by specifying it's class
+* **Breakable Mesh Node** - Spawns destructible meshes
 
 
 If you have the Dungeon Architect Paper2D extension installed, then you can spawn additional visual nodes
@@ -79,7 +80,6 @@ Alternatively, right click anywhere in the empty area and expand the `Dungeon` c
 
 Alternatively, these context menu actions are also visible in the Actions tab. Drag and drop visual node action into any empty area in the graph
 ![Add new visual node from Actions Tab](../assets/images/create_visual_node_04.png)
-
 
 
 Marker Emitter Nodes
