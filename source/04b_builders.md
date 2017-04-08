@@ -55,7 +55,7 @@ The various parameters are:
 
 Floor Plan Builder
 ------------------
-Create floor plans for your indoor buildings
+Create floor plans for your indoor buildings.  This builder is a work in progress
 
 YOUTUBE(K_iQH4TiVS0)
 
@@ -89,9 +89,42 @@ Select the Dungeon Actor from the Details window
 * **Max Build Time Per Frame**: The dungeon can be built over multiple frames so as to not hang the game (or the editor UI) while it is being built.  This value determines how much time is spent on each frame to build the dungeon.  Setting it to 0 would build the entire dungeon synchronously in a single frame.  Settting to 33ms for eg, would build it over multiple frames.  You get a callback notification when the dungeon build is complete
 
 
+Simple City Builder
+-------------------
+Create simple city layouts using this builder.  This builder is a work in progress
+
+Check the quick start samples for examples
+
+![City Builder](../assets/images/city_builder_toon_city.jpg)
+
+
+There's a simple game that uses the city builder.  The cities are procedurally generated using Dungeon Architect.  Dungeon architect also spawns waypoints for the pedestrians to walk around the city
+
+![Zombie City Game Demo](../assets/images/city_builder_zombie_city.png)
+
+YOUTUBE(ybZuP8ikTsE)
+
+
+###Configuration
+* **CellSize**: Defines the cell size of your city.  This depends on your modular art asset used by the roads tiles and buildings
+* **MinCitySize**: The minimum size of the city (in cell units)
+* **MaxCitySize**: The maximum size of the city (in cell units)
+* **MinBlockSize**: The minimum size of a city block (in cell units)
+* **MaxBlockSize**: The maximum size of a city block (in cell units)
+* **BiggerHouseProbability**: The house tiles are not restricted to 1x1 cell size. You can have larger dimension structures (e.g. stadiums, parking lots etc) that take up larger sizes e.g. 3x5, 2x4.   This probabiliy defines how often that happens.
+* **RoadEdgeRemovalProbability**: Some of the road edges are removed to create a more uneven and natural look rather than a rectangular grid like structure (refer city image above)
+* **CityBlockDimensions**: Specify larger structured blocks here with their dimension (e.g. 2x3) and their marker name (e.g. `ParkingLot`). You would then create a marker with this name and attach your larger mesh to it
+
+
+###Layout
+Houses inaccessible to roads are promoted to `Park`.  Houses also automatically face the roads.  If your house mesh is not facing the road, try rotating it from the mesh node in the theme graph
+
+
 Snap Builder
-------------------
+------------
 Create your modules in separate levels.  Then have DA create a dungeon with those modules by stiching them together
+
+This builder is a work in progress
 
 YOUTUBE(g4IXs_ns1NY)
 
@@ -147,7 +180,7 @@ Switch to your game level and register all these modules in your dungeon actor a
 
 Isaac Builder
 -------------
-Generates levels similar to the game Binding of Isaac
+Generates levels similar to the game Binding of Isaac.    This builder is a work in progress
 
 YOUTUBE(eRrh-SLcJ0A)
 
