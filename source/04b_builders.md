@@ -13,6 +13,8 @@ Grid Builder
 ------------
 This builder creates complex and beautiful dungeons with rooms, cooridors and height variations.
 
+This is the default builder used by Dungeon Architect
+
 YOUTUBE(dbDak6J61zw)
 
 ![Grid Builder layout](../assets/images/paint_rect_04.jpg)
@@ -98,7 +100,7 @@ Check the quick start samples for examples
 ![City Builder](../assets/images/city_builder_toon_city.jpg)
 
 
-There's a simple game that uses the city builder.  The cities are procedurally generated using Dungeon Architect.  Dungeon architect also spawns waypoints for the pedestrians to walk around the city
+There's a simple game that uses the city builder.  The cities are procedurally generated using Dungeon Architect.  In this game, Dungeon architect also spawns waypoints for the pedestrians to walk around the city
 
 ![Zombie City Game Demo](../assets/images/city_builder_zombie_city.png)
 
@@ -122,67 +124,70 @@ Houses inaccessible to roads are promoted to `Park`.  Houses also automatically 
 
 Snap Builder
 ------------
-Create your modules in separate levels.  Then have DA create a dungeon with those modules by stiching them together
+The snap builder allows you to stitch together custom designed rooms.   This gives the artist full control on how an individual room looks like.  These rooms are called Snap Modules.
 
-This builder is a work in progress
+Snap Modules are connected together through connection points called Snap Connections.   Your modules will have various connection points (usually at the doors)
 
-YOUTUBE(g4IXs_ns1NY)
+Check the quick start guide with a demo map with 20+ unique rooms 
 
-![Floor Plan Builder](../assets/images/snap_builder_eg_1.jpg)
-![Floor Plan Builder](../assets/images/snap_builder_eg_2.jpg)
+This builder is a work in progress and is not recommended for use in production yet
 
+YOUTUBE(pKeHsHekjpE)
 
-The designer would create a module (e.g. a room) in separate levels and assign attachment points (so other modules can connect to it).  These attachment points are called SnapDoors.  DA would them stitch them together
+### Layout
+A simple layout is used for now where there is a linear path from start to end and a few side branches along the way.  In the later updates, there will be multiple implementations of the layout algorithms and you should be able to swap between them
 
-With this builder, the artist gets a lot more control on how each module looks.  Here are some sample modules, each in its own individual level
-
-![Floor Plan Builder](../assets/images/snap_module_1.png)
-![Floor Plan Builder](../assets/images/snap_module_2.png)
-![Floor Plan Builder](../assets/images/snap_module_3.png)
-
-After you have designed a module, drop in the SnapDoor asset where an exit / entrance is expected so other modules can attach to it.  Adjust the rotation so the red arrow is aligned with the door exit
-![Add a door to the module](../assets/images/snap_module_drop_door.jpg)
-
-Door snap assets can be created like so:
-![Create a Snap Door Asset](../assets/images/snap_create_door.png)
-
-A Snap Door has its own editor where you define how the door would look
-![Snap Door Editor](../assets/images/snap_door_editor.png)
-
-Sometimes the door might not be connected to another module.  In this case, it's preferable to block the wall off instead of leaving an open space.   You can specify that mesh by switching the tab
-![Snap Door Editor](../assets/images/snap_door_editor_tab.png)
-
-Switch to your game level and register all these modules in your dungeon actor and build
-![Register Snap Modules](../assets/images/snap_module_register.png)
 
 ###Configuration
 
-![Snap Dungeon Configuration](../assets/images/dungeon_config_snap.png)
+![Snap Dungeon Configuration](../assets/images/dungeon_config_snap_v2.png)
 
 
 * **Seed**: Changing this number would completely change the layout of the dungeon.  This is the base random number seed that is used to build the dungeon
 
-* **Modules**: Here is where you register your module level assets.   DA would use these modules as building blocks to build your dungeon
+* **Modules**: Here is where you register your room module assets.   DA would use these modules as building blocks to build your dungeon
 
-* **Ignored Module Actor Type**: Since modules are designed in individual level files,  there might be actors in the module level which we don't want to be a part of the module itself (e.g. skybox, directional light, skylight, etc).    While spawning a module, DA would ignore actors of the specified types
+* **Start Modules**: If specified, a module from this list would be used as the starting room *[Not used for now]*
 
-* **Max Modules**: The no. of modules to spawn in the dungeon.  The higher the number, the bigger the dungeon
+* **End Modules**: If specified, a module from this list would be used as the ending room *[Not used for now]*
+
+* **Branch End Modules**: If specified, a module from this list would be used as the branch end room *[Not used for now]*
+
+* **Main Branch Size**: The size of the main branch from start to end (in module count)
 
 * **Collision Test Contraction**: When the modules are stitched together, DA makes sure that the newly spawned module would not overlap with any of the existing spawned module.  Setting this value to 0 would not spawn a module in locations with even the slightest overlap.  Setting to 100 units for e.g., would tolerate an overlap of 100 Unreal units
 
-* **Max Depth**: Determines how deep a chain of modules extend before they are branched out.  Set to 0 to ignore this field.  Setting to say 10, would stitch modules linearly 10 levels deep, before it branches of into another direction from an earlier module (if it has more than 2 doors)
-
-* **Instanced**: Use mesh instancing for lower batch count
+* **Instanced**: Use mesh instancing for lower batch count  *[Not used for now]*
 
 * **Max Build Time Per Frame**: The dungeon can be built over multiple frames so as to not hang the game (or the editor UI) while it is being built.  This value determines how much time is spent on each frame to build the dungeon.  Setting it to 0 would build the entire dungeon synchronously in a single frame.  Settting to 33ms for eg, would build it over multiple frames.  You get a callback notification when the dungeon build is complete
 
 
+###Module Creation
+Any normal actor blueprint can be used as a snap module.   Since it is difficult to design the module inside the blueprint viewport, it is easier to create your room module in a separate level then convert it to a blueprint
+
+###Snap Connections
+You modules need a way to connect to other modules.   This is done using Snap Connections.  Create a new snap connection blueprint by choosing SnapConnection as the base class
+
+![Snap Connection](../assets/images/snap_connection.png)
+
+Drop this snap connection blueprints in your module blueprint and position them accordingly.
+
+This is an experimental feature and will change in the future
 
 Isaac Builder
 -------------
 Generates levels similar to the game Binding of Isaac.    This builder is a work in progress
 
 YOUTUBE(eRrh-SLcJ0A)
+
+
+Custom Grid Builder
+-------------------
+This is based on the Grid Builder and allows you to define your own layouts easily from blueprints.  It has various high level functions for placement of rooms and their corridor connections.  If you are looking to define your own procedural layouts in blueprints,  you might want to start here
+
+Check the quick start samples for more info
+YOUTUBE(AzO2gI0NV-Q)
+
 
 
 Theming
