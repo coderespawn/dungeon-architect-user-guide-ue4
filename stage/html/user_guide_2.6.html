@@ -22,7 +22,7 @@
 <script>
 
 function getPdfUrl() {
-	return "../pdf/user_guide_2.0.pdf";
+	return "../pdf/user_guide_2.6.pdf";
 }
 
 </script>
@@ -167,7 +167,7 @@ $(document).ready(function() {
 				<li><a href="user_guide_1.3.0.html">1.3.0</a></li>
 			    </ul>
 			  </div>
-			  <div class="version-number">2.0</div>
+			  <div class="version-number">2.6</div>
 			</div>
 <div id="header">
 <h1 class="title">Dungeon Architect User Guide</h1>
@@ -191,10 +191,18 @@ $(document).ready(function() {
 <li><a href="#floor-plan-builder">Floor Plan Builder</a><ul>
 <li><a href="#configuration-1">Configuration</a></li>
 </ul></li>
-<li><a href="#snap-builder">Snap Builder</a><ul>
+<li><a href="#simple-city-builder">Simple City Builder</a><ul>
 <li><a href="#configuration-2">Configuration</a></li>
+<li><a href="#layout">Layout</a></li>
+</ul></li>
+<li><a href="#snap-builder">Snap Builder</a><ul>
+<li><a href="#layout-1">Layout</a></li>
+<li><a href="#configuration-3">Configuration</a></li>
+<li><a href="#module-creation">Module Creation</a></li>
+<li><a href="#snap-connections">Snap Connections</a></li>
 </ul></li>
 <li><a href="#isaac-builder">Isaac Builder</a></li>
+<li><a href="#custom-grid-builder">Custom Grid Builder</a></li>
 <li><a href="#theming">Theming</a></li>
 </ul></li>
 <li><a href="#theme-overview">Theme Overview</a><ul>
@@ -225,6 +233,7 @@ $(document).ready(function() {
 <li><a href="#spot-light-node">Spot Light Node</a></li>
 <li><a href="#particle-node">Particle Node</a></li>
 <li><a href="#actor-class-node">Actor Class Node</a></li>
+<li><a href="#destructible-mesh-node">Destructible Mesh Node</a></li>
 </ul></li>
 <li><a href="#marker-node">Marker Node</a></li>
 <li><a href="#marker-emitter-node">Marker Emitter Node</a></li>
@@ -234,12 +243,13 @@ $(document).ready(function() {
 <li><a href="#using-selection-rules">Using Selection Rules</a></li>
 <li><a href="#example-1">Example #1</a></li>
 <li><a href="#example-2">Example #2</a></li>
+<li><a href="#example-3">Example #3</a></li>
 </ul></li>
 <li><a href="#transform-rule">Transform Rule</a><ul>
 <li><a href="#using-transform-rules">Using Transform Rules</a></li>
 <li><a href="#example-1-1">Example #1</a></li>
 <li><a href="#example-2-1">Example #2</a></li>
-<li><a href="#example-3">Example #3</a></li>
+<li><a href="#example-3-1">Example #3</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#paint-mode">Paint Mode</a><ul>
@@ -259,7 +269,53 @@ $(document).ready(function() {
 <li><a href="#theme-preview">Theme Preview</a></li>
 <li><a href="#example-1-2">Example #1</a></li>
 <li><a href="#example-2-2">Example #2</a></li>
-<li><a href="#example-3-1">Example #3</a></li>
+<li><a href="#example-3-2">Example #3</a></li>
+</ul></li>
+<li><a href="#spatial-constraints">Spatial Constraints</a></li>
+<li><a href="#clustered-theming">Clustered Theming</a><ul>
+<li><a href="#using-clustered-theming">Using Clustered Theming</a></li>
+<li><a href="#height-variations">Height Variations</a></li>
+</ul></li>
+<li><a href="#query-interface">Query Interface</a><ul>
+<li><a href="#access-the-query-interface">Access the Query Interface</a></li>
+<li><a href="#grid-query-interface">Grid Query Interface</a><ul>
+<li><a href="#get-cells">Get Cells</a></li>
+<li><a href="#get-cells-of-type">Get Cells Of Type</a></li>
+<li><a href="#get-cell-dimension">Get Cell Dimension</a></li>
+<li><a href="#get-path-between-cells">Get Path Between Cells</a></li>
+<li><a href="#get-furthest-rooms">Get Furthest Rooms</a></li>
+<li><a href="#get-cell-at-location">Get Cell At Location</a></li>
+<li><a href="#get-cell-type">Get Cell Type</a></li>
+<li><a href="#get-random-cell">Get Random Cell</a></li>
+<li><a href="#get-random-cell-of-type">Get Random Cell Of Type</a></li>
+<li><a href="#contains-stair-between">Contains Stair Between</a></li>
+<li><a href="#contains-door-between">Contains Door Between</a></li>
+<li><a href="#get-stair-between">Get Stair Between</a></li>
+<li><a href="#get-opening-point-between-adjacent-cells">Get Opening Point Between Adjacent Cells</a></li>
+<li><a href="#get-adjacent-cells-on-edge">Get Adjacent Cells On Edge</a></li>
+<li><a href="#is-near-marker">Is Near Marker</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#spawn-logic">Spawn Logic</a><ul>
+<li><a href="#create-spawn-logic">Create Spawn Logic</a></li>
+<li><a href="#define-spawn-logic">Define Spawn Logic</a></li>
+</ul></li>
+<li><a href="#event-listeners">Event Listeners</a><ul>
+<li><a href="#creation">Creation</a></li>
+<li><a href="#registration">Registration</a></li>
+<li><a href="#event-callbacks">Event Callbacks</a><ul>
+<li><a href="#on-pre-dungeon-build">On Pre Dungeon Build</a></li>
+<li><a href="#on-dungeon-layout-built">On Dungeon Layout Built</a></li>
+<li><a href="#on-markers-emitted">On Markers Emitted</a></li>
+<li><a href="#on-post-dungeon-build">On Post Dungeon Build</a></li>
+<li><a href="#on-pre-dungeon-destroy">On Pre Dungeon Destroy</a></li>
+<li><a href="#on-dungeon-destroyed">On Dungeon Destroyed</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#landscape-transformer">Landscape Transformer</a></li>
+<li><a href="#advanced">Advanced</a><ul>
+<li><a href="#using-multiple-dungeons">Using Multiple Dungeons</a></li>
+<li><a href="#blend-with-existing-art">Blend with existing art</a></li>
 </ul></li>
 </ul>
 </div>
@@ -351,6 +407,7 @@ After the layout has been generated, it spawns meshes, lights, blueprints etc, b
 <p>Here we explore the various dungeon builders that ship with Dungeon Architect</p>
 <h2 id="grid-builder">Grid Builder</h2>
 <p>This builder creates complex and beautiful dungeons with rooms, cooridors and height variations.</p>
+<p>This is the default builder used by Dungeon Architect</p>
 <p><iframe width="853" height="480" src="https://www.youtube.com/embed/dbDak6J61zw?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
 <p><img src="../assets/images/paint_rect_04.jpg" alt="Grid Builder layout" /> <img src="../assets/images/grid_builder_eg_1.jpg" alt="Grid Builder layout" /> <img src="../assets/images/grid_builder_eg_2.jpg" alt="Grid Builder layout" /> <img src="../assets/images/grid_builder_eg_3.jpg" alt="Grid Builder layout" /> <img src="../assets/images/grid_builder_eg_4.jpg" alt="Grid Builder layout" /> <img src="../assets/images/grid_builder_eg_5.jpg" alt="Grid Builder layout" /></p>
 <h3 id="configuration">Configuration</h3>
@@ -369,6 +426,7 @@ After the layout has been generated, it spawns meshes, lights, blueprints etc, b
 <li><strong>Room Aspect Delta</strong>: The aspect ratio of the cells (width to height ratio). Keeping this value near 0 would create square rooms. Bringing this close to 1 would create elongated / stretched rooms with a high width to height ratio</li>
 <li><strong>Spanning Tree Loop</strong>: Determines how many loops you would like to have in your dungeon. A value near 0 will create fewer loops creating linear dungeons. A value near 1 would create lots of loops, which would look unoriginal. Its good to allow a few loops so a value close to zero (like 0.2 should be good)</li>
 <li><strong>Stair Connection Tolerance</strong>: The generator would add stairs to make different areas of the dungeon accessible. However, we do not want too many stairs. For e.g., before adding a stair in a particular elevated area, the generator would check if this area is already accessible from a nearby stair. If so, it would not add it. This tolerance parameter determines how far to look for an existing path before we can add a stair. Play with this parameter if you see too many stairs close to each other, or too few</li>
+<li><strong>Door Proximity Steps</strong>: Increase this value to remove nearby duplicate doors. This value determines how many cell we can move to reach the two connected cells of a door if the door was removed</li>
 <li><strong>Height Variation Probability</strong>: Tweak this value to increase / reduce the height variations (and stairs) in your dungeon. A value close to 0 reduces the height variation and increases as you approach 1. Increasing this value to a higher level might create dungeons with no place for proper stair placement since there is too much height variation. A value of 0.2 to 0.4 seems good</li>
 <li><strong>Normal Mean / Std</strong>: The random number generator used in the dungeon generator does not use a uniform distribution. Instead it uses a normal distribution to get higher frequency of lower values and fewer higher values (and hence fewer room cells and a lot more corridor cells). Play with these parameters for different results</li>
 <li><strong>Grid Cell Size</strong>: The dungeon generator works on a grid based system and required modular mesh assets to be placed on each cell (floors, walls, doors etc). This important field specifies the size of the cell to use. This size is determined by the art asset used in the dungeon theme designed by the artist. In the demo, we have a floor mesh that is 400x400. The height of a floor is chosen to be 200 units as the stair mesh is 200 units high. Hence the defaults are set to 400x400x200. You should change this to the dimension of the modular asset your designer has created for the dungeon</li>
@@ -379,7 +437,7 @@ After the layout has been generated, it spawns meshes, lights, blueprints etc, b
 <li><strong>Max Build Time Per Frame</strong>: The dungeon can be built over multiple frames so as to not hang the game (or the editor UI) while it is being built. This value determines how much time is spent on each frame to build the dungeon. Setting it to 0 would build the entire dungeon synchronously in a single frame. Settting to 33ms for eg, would build it over multiple frames. You get a callback notification when the dungeon build is complete</li>
 </ul>
 <h2 id="floor-plan-builder">Floor Plan Builder</h2>
-<p>Create floor plans for your indoor buildings</p>
+<p>Create floor plans for your indoor buildings. This builder is a work in progress</p>
 <p><iframe width="853" height="480" src="https://www.youtube.com/embed/K_iQH4TiVS0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
 <p><img src="../assets/images/floor_builder_eg_1.jpg" alt="Floor Plan Builder" /> <img src="../assets/images/floor_builder_eg_2.jpg" alt="Floor Plan Builder" /> <img src="../assets/images/floor_builder_eg_3.jpg" alt="Floor Plan Builder" /> <img src="../assets/images/floor_builder_eg_4.jpg" alt="Floor Plan Builder" /> <img src="../assets/images/floor_builder_eg_5.jpg" alt="Floor Plan Builder" /></p>
 <h3 id="configuration-1">Configuration</h3>
@@ -398,36 +456,72 @@ After the layout has been generated, it spawns meshes, lights, blueprints etc, b
 <li><p><strong>Instanced</strong>: Use mesh instancing for lower batch count</p></li>
 <li><p><strong>Max Build Time Per Frame</strong>: The dungeon can be built over multiple frames so as to not hang the game (or the editor UI) while it is being built. This value determines how much time is spent on each frame to build the dungeon. Setting it to 0 would build the entire dungeon synchronously in a single frame. Settting to 33ms for eg, would build it over multiple frames. You get a callback notification when the dungeon build is complete</p></li>
 </ul>
-<h2 id="snap-builder">Snap Builder</h2>
-<p>Create your modules in separate levels. Then have DA create a dungeon with those modules by stiching them together</p>
-<p><iframe width="853" height="480" src="https://www.youtube.com/embed/g4IXs_ns1NY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
-<p><img src="../assets/images/snap_builder_eg_1.jpg" alt="Floor Plan Builder" /> <img src="../assets/images/snap_builder_eg_2.jpg" alt="Floor Plan Builder" /></p>
-<p>The designer would create a module (e.g. a room) in separate levels and assign attachment points (so other modules can connect to it). These attachment points are called SnapDoors. DA would them stitch them together</p>
-<p>With this builder, the artist gets a lot more control on how each module looks. Here are some sample modules, each in its own individual level</p>
-<p><img src="../assets/images/snap_module_1.png" alt="Floor Plan Builder" /> <img src="../assets/images/snap_module_2.png" alt="Floor Plan Builder" /> <img src="../assets/images/snap_module_3.png" alt="Floor Plan Builder" /></p>
-<p>After you have designed a module, drop in the SnapDoor asset where an exit / entrance is expected so other modules can attach to it. Adjust the rotation so the red arrow is aligned with the door exit <img src="../assets/images/snap_module_drop_door.jpg" alt="Add a door to the module" /></p>
-<p>Door snap assets can be created like so: <img src="../assets/images/snap_create_door.png" alt="Create a Snap Door Asset" /></p>
-<p>A Snap Door has its own editor where you define how the door would look <img src="../assets/images/snap_door_editor.png" alt="Snap Door Editor" /></p>
-<p>Sometimes the door might not be connected to another module. In this case, it’s preferable to block the wall off instead of leaving an open space. You can specify that mesh by switching the tab <img src="../assets/images/snap_door_editor_tab.png" alt="Snap Door Editor" /></p>
-<p>Switch to your game level and register all these modules in your dungeon actor and build <img src="../assets/images/snap_module_register.png" alt="Register Snap Modules" /></p>
-<h3 id="configuration-2">Configuration</h3>
+<h2 id="simple-city-builder">Simple City Builder</h2>
+<p>Create simple city layouts using this builder. This builder is a work in progress</p>
+<p>Check the quick start samples for examples</p>
 <div class="figure">
-<img src="../assets/images/dungeon_config_snap.png" alt="Snap Dungeon Configuration" />
+<img src="../assets/images/city_builder_toon_city.jpg" alt="City Builder" />
+<p class="caption">City Builder</p>
+</div>
+<p>There’s a simple game that uses the city builder. The cities are procedurally generated using Dungeon Architect. In this game, Dungeon architect also spawns waypoints for the pedestrians to walk around the city</p>
+<div class="figure">
+<img src="../assets/images/city_builder_zombie_city.png" alt="Zombie City Game Demo" />
+<p class="caption">Zombie City Game Demo</p>
+</div>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/ybZuP8ikTsE?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h3 id="configuration-2">Configuration</h3>
+<ul>
+<li><strong>CellSize</strong>: Defines the cell size of your city. This depends on your modular art asset used by the roads tiles and buildings</li>
+<li><strong>MinCitySize</strong>: The minimum size of the city (in cell units)</li>
+<li><strong>MaxCitySize</strong>: The maximum size of the city (in cell units)</li>
+<li><strong>MinBlockSize</strong>: The minimum size of a city block (in cell units)</li>
+<li><strong>MaxBlockSize</strong>: The maximum size of a city block (in cell units)</li>
+<li><strong>BiggerHouseProbability</strong>: The house tiles are not restricted to 1x1 cell size. You can have larger dimension structures (e.g. stadiums, parking lots etc) that take up larger sizes e.g. 3x5, 2x4. This probabiliy defines how often that happens.</li>
+<li><strong>RoadEdgeRemovalProbability</strong>: Some of the road edges are removed to create a more uneven and natural look rather than a rectangular grid like structure (refer city image above)</li>
+<li><strong>CityBlockDimensions</strong>: Specify larger structured blocks here with their dimension (e.g. 2x3) and their marker name (e.g. <code>ParkingLot</code>). You would then create a marker with this name and attach your larger mesh to it</li>
+</ul>
+<h3 id="layout">Layout</h3>
+<p>Houses inaccessible to roads are promoted to <code>Park</code>. Houses also automatically face the roads. If your house mesh is not facing the road, try rotating it from the mesh node in the theme graph</p>
+<h2 id="snap-builder">Snap Builder</h2>
+<p>The snap builder allows you to stitch together custom designed rooms. This gives the artist full control on how an individual room looks like. These rooms are called Snap Modules.</p>
+<p>Snap Modules are connected together through connection points called Snap Connections. Your modules will have various connection points (usually at the doors)</p>
+<p>Check the quick start guide with a demo map with 20+ unique rooms</p>
+<p>This builder is a work in progress and is not recommended for use in production yet</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/pKeHsHekjpE?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h3 id="layout-1">Layout</h3>
+<p>A simple layout is used for now where there is a linear path from start to end and a few side branches along the way. In the later updates, there will be multiple implementations of the layout algorithms and you should be able to swap between them</p>
+<h3 id="configuration-3">Configuration</h3>
+<div class="figure">
+<img src="../assets/images/dungeon_config_snap_v2.png" alt="Snap Dungeon Configuration" />
 <p class="caption">Snap Dungeon Configuration</p>
 </div>
 <ul>
 <li><p><strong>Seed</strong>: Changing this number would completely change the layout of the dungeon. This is the base random number seed that is used to build the dungeon</p></li>
-<li><p><strong>Modules</strong>: Here is where you register your module level assets. DA would use these modules as building blocks to build your dungeon</p></li>
-<li><p><strong>Ignored Module Actor Type</strong>: Since modules are designed in individual level files, there might be actors in the module level which we don’t want to be a part of the module itself (e.g. skybox, directional light, skylight, etc). While spawning a module, DA would ignore actors of the specified types</p></li>
-<li><p><strong>Max Modules</strong>: The no. of modules to spawn in the dungeon. The higher the number, the bigger the dungeon</p></li>
+<li><p><strong>Modules</strong>: Here is where you register your room module assets. DA would use these modules as building blocks to build your dungeon</p></li>
+<li><p><strong>Start Modules</strong>: If specified, a module from this list would be used as the starting room <em>[Not used for now]</em></p></li>
+<li><p><strong>End Modules</strong>: If specified, a module from this list would be used as the ending room <em>[Not used for now]</em></p></li>
+<li><p><strong>Branch End Modules</strong>: If specified, a module from this list would be used as the branch end room <em>[Not used for now]</em></p></li>
+<li><p><strong>Main Branch Size</strong>: The size of the main branch from start to end (in module count)</p></li>
 <li><p><strong>Collision Test Contraction</strong>: When the modules are stitched together, DA makes sure that the newly spawned module would not overlap with any of the existing spawned module. Setting this value to 0 would not spawn a module in locations with even the slightest overlap. Setting to 100 units for e.g., would tolerate an overlap of 100 Unreal units</p></li>
-<li><p><strong>Max Depth</strong>: Determines how deep a chain of modules extend before they are branched out. Set to 0 to ignore this field. Setting to say 10, would stitch modules linearly 10 levels deep, before it branches of into another direction from an earlier module (if it has more than 2 doors)</p></li>
-<li><p><strong>Instanced</strong>: Use mesh instancing for lower batch count</p></li>
+<li><p><strong>Instanced</strong>: Use mesh instancing for lower batch count <em>[Not used for now]</em></p></li>
 <li><p><strong>Max Build Time Per Frame</strong>: The dungeon can be built over multiple frames so as to not hang the game (or the editor UI) while it is being built. This value determines how much time is spent on each frame to build the dungeon. Setting it to 0 would build the entire dungeon synchronously in a single frame. Settting to 33ms for eg, would build it over multiple frames. You get a callback notification when the dungeon build is complete</p></li>
 </ul>
+<h3 id="module-creation">Module Creation</h3>
+<p>Any normal actor blueprint can be used as a snap module. Since it is difficult to design the module inside the blueprint viewport, it is easier to create your room module in a separate level then convert it to a blueprint</p>
+<h3 id="snap-connections">Snap Connections</h3>
+<p>You modules need a way to connect to other modules. This is done using Snap Connections. Create a new snap connection blueprint by choosing SnapConnection as the base class</p>
+<div class="figure">
+<img src="../assets/images/snap_connection.png" alt="Snap Connection" />
+<p class="caption">Snap Connection</p>
+</div>
+<p>Drop this snap connection blueprints in your module blueprint and position them accordingly.</p>
+<p>This is an experimental feature and will change in the future</p>
 <h2 id="isaac-builder">Isaac Builder</h2>
-<p>Generates levels similar to the game Binding of Isaac</p>
+<p>Generates levels similar to the game Binding of Isaac. This builder is a work in progress</p>
 <p><iframe width="853" height="480" src="https://www.youtube.com/embed/eRrh-SLcJ0A?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h2 id="custom-grid-builder">Custom Grid Builder</h2>
+<p>This is based on the Grid Builder and allows you to define your own layouts easily from blueprints. It has various high level functions for placement of rooms and their corridor connections. If you are looking to define your own procedural layouts in blueprints, you might want to start here</p>
+<p>Check the quick start samples for more info <iframe width="853" height="480" src="https://www.youtube.com/embed/AzO2gI0NV-Q?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
 <h2 id="theming">Theming</h2>
 <p>To preview your custom builder in a theme file, open the theme in the Theme Editor and go to Properties &gt; Dungeon</p>
 <div class="figure">
@@ -533,6 +627,7 @@ After the layout has been generated, it spawns meshes, lights, blueprints etc, b
 <li><strong>Spot Light Node</strong> - Spawns spot lights</li>
 <li><strong>Particle Node</strong> - Spawns particle systems</li>
 <li><strong>Actor Node</strong> - Spawn any type of actor by specifying it’s class</li>
+<li><strong>Breakable Mesh Node</strong> - Spawns destructible meshes</li>
 </ul>
 <p>If you have the Dungeon Architect Paper2D extension installed, then you can spawn additional visual nodes</p>
 <ul>
@@ -613,6 +708,11 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 <p class="caption">Mesh Node Advanced properties</p>
 </div>
 <p><strong>Advanced properties</strong>: Modify advanced mesh node properties from here. Note: The <em>material overrides</em> and <em>static mesh</em> parameter has to be set in the node’s property as described above and not here</p>
+<p>TIP: Drag a static mesh from the content browser on to the graph window to quickly create a mesh node</p>
+<div class="figure">
+<img src="../assets/images/theme_editor_drag_drop.png" alt="Drag Drop static mesh to create a mesh node" />
+<p class="caption">Drag Drop static mesh to create a mesh node</p>
+</div>
 <h3 id="point-light-node">Point Light Node</h3>
 <p>Place point lights on the scene with this node</p>
 <div class="figure">
@@ -635,6 +735,11 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 <p class="caption">Particle Emitter Node Properties</p>
 </div>
 <p>Assign the Paritcle system template in the <strong>Particle System</strong> field</p>
+<p>You can drag and drop a particle system from the content browser on to the theme editor to create a new particle system node</p>
+<div class="figure">
+<img src="../assets/images/drag_drop_particle_node.png" alt="Particle Node Drag Drop" />
+<p class="caption">Particle Node Drag Drop</p>
+</div>
 <h3 id="actor-class-node">Actor Class Node</h3>
 <p>You can place any kind of actor in the scene using an <strong>Actor Node</strong></p>
 <div class="figure">
@@ -646,6 +751,24 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 <img src="../assets/images/node_prop_actor2.png" alt="Actor Node spawning a Reflection Capture Actor" />
 <p class="caption">Actor Node spawning a Reflection Capture Actor</p>
 </div>
+<p>After you have set a class, you can modify and customize your actor properties. This allows you to set your actor’s public blueprint variables</p>
+<div class="figure">
+<img src="../assets/images/actor_node_customize.png" alt="Actor Node spawning a Reflection Capture Actor" />
+<p class="caption">Actor Node spawning a Reflection Capture Actor</p>
+</div>
+<h3 id="destructible-mesh-node">Destructible Mesh Node</h3>
+<div class="figure">
+<img src="../assets/images/destruct_mesh_wall.jpg" alt="Destructible Mesh" />
+<p class="caption">Destructible Mesh</p>
+</div>
+<p>Spawn destructible meshes on your scene using this node. Destructible meshes are a feature in UE4 that lets you fracture a mesh when it is damaged. You can find more info on creating destructible meshes <a href="https://docs.unrealengine.com/latest/INT/Videos/PLZlv_N0_O1gYeJX3xX44yzOb7_kTS7FPM/-gGiEmYj4oE/">here</a></p>
+<p>After you have created a destructible mesh, you can assign it to this node from the details window</p>
+<div class="figure">
+<img src="../assets/images/destruct_mesh_details.png" alt="Destructible Mesh Details" />
+<p class="caption">Destructible Mesh Details</p>
+</div>
+<p>The Deathmatch shooter demo uses destructible meshes. The players can shoot at it and break the walls</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/VZIIEQoMp7o?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
 <h2 id="marker-node">Marker Node</h2>
 <div class="figure">
 <img src="../assets/images/node_prop_marker.png" alt="Marker Node Properties" />
@@ -717,6 +840,9 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 <p class="caption">Room selector logic</p>
 </div>
 <p>The above Selection logic was attached to the stone mesh ground node so it gets selected only when the ground marker is inside a room</p>
+<h3 id="example-3">Example #3</h3>
+<p>Ignore nodes that are near other markers. This is very useful if you don’t want to place blocking items near stairs, doors etc</p>
+<p><img src="../assets/images/query_grid_near_marker_1.png" alt="Query System" /> <img src="../assets/images/query_grid_near_marker_2.png" alt="Query System" /></p>
 <h2 id="transform-rule">Transform Rule</h2>
 <p>Dungeon Architect lets you specify offsets to your visual nodes to move/scale/rotate them from their relative marker locations.</p>
 <div class="figure">
@@ -766,7 +892,7 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 <img src="../assets/images/transform_rule_eg2_2.jpg" alt="Rule assignment" />
 <p class="caption">Rule assignment</p>
 </div>
-<h3 id="example-3">Example #3</h3>
+<h3 id="example-3-1">Example #3</h3>
 <p>In this example a small random rotation is applied to orange ground tiles. Useful while creating ruins when laying down broken tile meshes</p>
 <div class="figure">
 <img src="../assets/images/vol_platform_04c.jpg" alt="Transform rule applied to orange ground meshes" />
@@ -988,9 +1114,265 @@ One of the 3 meshes has a window in it and we would like to decorate that mesh w
 <img src="../assets/images/marker_emitter_eg2_4.jpg" alt="Hell Forge theme with Mountains and Caves" />
 <p class="caption">Hell Forge theme with Mountains and Caves</p>
 </div>
-<h2 id="example-3-1">Example #3</h2>
+<h2 id="example-3-2">Example #3</h2>
 <p>Heres another example of a curved roof created over a room using marker emitters</p>
 <p><img src="../assets/images/marker_emitter_eg3_1.jpg" /> <img src="../assets/images/marker_emitter_eg3_2.jpg" /> <img src="../assets/images/marker_emitter_eg3_3.jpg" /></p>
+<h1 id="spatial-constraints">Spatial Constraints</h1>
+<p>Spatial constraints are great of checking the state of nearby tiles and using it as a condition to place items on the scene</p>
+<p>Spatial constraints are set in the theme graph’s node.</p>
+<div class="figure">
+<img src="../assets/images/spatial_constraint_a.jpg" alt="Spatial Constraints" />
+<p class="caption">Spatial Constraints</p>
+</div>
+<p>In the above example, a statue mesh is added to the ground marker. We want this to appear only on the corners and not on each tile</p>
+<p>Select a mesh node and in the details panel, enable <em>Use Spatial Constraint</em></p>
+<p>Then select the spatial constraint type. Since this is a ground mesh, it is surrounded by 3x3 tiles</p>
+<div class="figure">
+<img src="../assets/images/spatial_constraint2.png" alt="Spatial Constraints" />
+<p class="caption">Spatial Constraints</p>
+</div>
+<p>Expand the spatial setup. Here you specify the rules of the adjacent tiles, whether it should be empty, occupied or should be ignored. The rules will try to rotate to best fit the layout</p>
+<div class="figure">
+<img src="../assets/images/spatial_constraint3.jpg" alt="Spatial Constraints" />
+<p class="caption">Spatial Constraints</p>
+</div>
+<p>With this setup, the statues spawn only at the corners</p>
+<h1 id="clustered-theming">Clustered Theming</h1>
+<p>Clustered theming allows you to automatically apply different themes to various parts (clusters) of your dungeons. This helps in adding variation to your levels and break monotony</p>
+<p>A continous section of corridor cells or rooms are assigned to a clusters to have a proper theme transtions</p>
+<div class="figure">
+<img src="../assets/images/cluster_theme.jpg" alt="Cluster Theming" />
+<p class="caption">Cluster Theming</p>
+</div>
+<h2 id="using-clustered-theming">Using Clustered Theming</h2>
+<p>To use clustered theming, enable it from the dungeon’s detail panel</p>
+<div class="figure">
+<img src="../assets/images/cluster_theme_enable.png" alt="Enable Cluster Theming" />
+<p class="caption">Enable Cluster Theming</p>
+</div>
+<p>Once enabled, you need to define a list of theme sets you’d like to apply on the clusters from the Advanced category of the dungeon’s detail panel</p>
+<div class="figure">
+<img src="../assets/images/cluster_theme_advanced_details.png" alt="Assign Cluster Themes" />
+<p class="caption">Assign Cluster Themes</p>
+</div>
+<p><strong>IMPORTANT:</strong> When you use clustered themes, the <strong>dungeon’s default theme array list will be ignored</strong> and the theme list defined in the cluster themes mapping would be used instead</p>
+<p>Currently, only the grid builder supports clustered theming</p>
+<h2 id="height-variations">Height Variations</h2>
+<p>Corridor cells connected together are grouped into a cluster. You can customize if connected nearby corridor cells on different height (connected through stairs) should be grouped into the same cluster</p>
+<div class="figure">
+<img src="../assets/images/cluster_theme_advanced_details.png" alt="Cluster Height Variation" />
+<p class="caption">Cluster Height Variation</p>
+</div>
+<p><img src="../assets/images/cluster_theme_height1.jpg" alt="Cluster Height Variation" /> <img src="../assets/images/cluster_theme_height2.jpg" alt="Cluster Height Variation" /></p>
+<p>Notice the corridor on the bottom right. It was split into two themes because of the height variation</p>
+<h1 id="query-interface">Query Interface</h1>
+<p>The query interface has various helper functions to query the structure of the dungeon. You can use the query interface in your selector / transform logics or marker emitters for more control</p>
+<p>Each builder implements its own query interface.</p>
+<h2 id="access-the-query-interface">Access the Query Interface</h2>
+<p>You can access the query interface from different places</p>
+<div class="figure">
+<img src="../assets/images/query_interface_access_selector_logic.png" alt="Query interface in the selection rule" />
+<p class="caption">Query interface in the selection rule</p>
+</div>
+<hr />
+<div class="figure">
+<img src="../assets/images/query_interface_access_transform_logic.png" alt="Query interface in the transformer rule" />
+<p class="caption">Query interface in the transformer rule</p>
+</div>
+<hr />
+<div class="figure">
+<img src="../assets/images/query_interface_access_marker_emiter.png" alt="Query interface in the marker emitter" />
+<p class="caption">Query interface in the marker emitter</p>
+</div>
+<hr />
+<div class="figure">
+<img src="../assets/images/query_interface_access_dungeon_actor.png" alt="Query interface from other blueprints" />
+<p class="caption">Query interface from other blueprints</p>
+</div>
+<hr />
+<h2 id="grid-query-interface">Grid Query Interface</h2>
+<p>The Grid Query Interface lets you query the structure of a grid builder based dungeon</p>
+<h3 id="get-cells">Get Cells</h3>
+<p>Gets a list of all the Cell IDs in the dungeon. A corridor patch or a room is a cell. A cell is always rectangular in shape, with a center and size</p>
+<div class="figure">
+<img src="../assets/images/query_grid_GetCells.png" alt="Get Cells" />
+<p class="caption">Get Cells</p>
+</div>
+<h3 id="get-cells-of-type">Get Cells Of Type</h3>
+<p>Similar to Get Cells function but filters the cells based on a type (Room, Coordor)</p>
+<div class="figure">
+<img src="../assets/images/query_grid_GetCellsOfType.png" alt="Get Cells Of Type" />
+<p class="caption">Get Cells Of Type</p>
+</div>
+<h3 id="get-cell-dimension">Get Cell Dimension</h3>
+<p>Gets the dimension of a cell. This takes in a cell id and will return the center and the size of the cell</p>
+<div class="figure">
+<img src="../assets/images/query_grid_GetCellDimension.png" alt="Get Cell Dimension" />
+<p class="caption">Get Cell Dimension</p>
+</div>
+<h3 id="get-path-between-cells">Get Path Between Cells</h3>
+<p>Gets a valid path between any two cell points. This can be used to create waypoints in your game. There is an example in the quick start guide demonstrating this</p>
+<div class="figure">
+<img src="../assets/images/query_grid_GetPathBetweenCells.png" alt="Get Path Between Cells" />
+<p class="caption">Get Path Between Cells</p>
+</div>
+<div class="figure">
+<img src="../assets/images/query_grid_path.jpg" alt="Query path between two cells" />
+<p class="caption">Query path between two cells</p>
+</div>
+<h3 id="get-furthest-rooms">Get Furthest Rooms</h3>
+<p>Find the furthest rooms in the dungeon. This function returns two cell ID. This can be useful for setting the start / end rooms (or spawn / boss rooms)</p>
+<div class="figure">
+<img src="../assets/images/query_grid_GetFurthestRooms.png" alt="Get Furthest Rooms" />
+<p class="caption">Get Furthest Rooms</p>
+</div>
+<h3 id="get-cell-at-location">Get Cell At Location</h3>
+<p>Pass in a world location and get the cell id. This is useful for finding the cell an actor is in. For e.g., if you’d like to check if all NPCs in a room are dead before unlocking a door, you would iterate through all the actors and check if they are in the same room the player is in</p>
+<div class="figure">
+<img src="../assets/images/query_grid_GetCellAtLocation.png" alt="Get Cell At Location" />
+<p class="caption">Get Cell At Location</p>
+</div>
+<h3 id="get-cell-type">Get Cell Type</h3>
+<p>Find the type of the cell (Room, corridor). There is another category called CorridorPadding, which should also be considered a Corridor</p>
+<div class="figure">
+<img src="../assets/images/query_grid_GetCellType.png" alt="Get Cell Type" />
+<p class="caption">Get Cell Type</p>
+</div>
+<h3 id="get-random-cell">Get Random Cell</h3>
+<p>Gets a random cell from the dungeon.</p>
+<p>There also a version that takes in a random stream. You should use the random stream version if you want to guarantee the same dungeon for a particular configuration. The dungeon’s random stream is access from within the selector and transform rules</p>
+<div class="figure">
+<img src="../assets/images/query_grid_GetRandomCell.png" alt="Get Random Cell" />
+<p class="caption">Get Random Cell</p>
+</div>
+<h3 id="get-random-cell-of-type">Get Random Cell Of Type</h3>
+<p>Gets a random cell of a particular type from the dungeon.</p>
+<p>There also a version that takes in a random stream. You should use the random stream version if you want to guarantee the same dungeon for a particular configuration. The dungeon’s random stream is access from within the selector and transform rules</p>
+<div class="figure">
+<img src="../assets/images/query_grid_GetRandomCellOfType.png" alt="Get Random Cell Of Type" />
+<p class="caption">Get Random Cell Of Type</p>
+</div>
+<h3 id="contains-stair-between">Contains Stair Between</h3>
+<p>Check if there is a stair connecting the two input cells</p>
+<div class="figure">
+<img src="../assets/images/query_grid_ContainsStairBetween.png" alt="Contains Stair Between" />
+<p class="caption">Contains Stair Between</p>
+</div>
+<h3 id="contains-door-between">Contains Door Between</h3>
+<p>Check if there is a door connecting the two input cells</p>
+<div class="figure">
+<img src="../assets/images/query_grid_ContainsDoorBetween.png" alt="Contains Door Between" />
+<p class="caption">Contains Door Between</p>
+</div>
+<h3 id="get-stair-between">Get Stair Between</h3>
+<p>Get the stair information between the two input cells</p>
+<div class="figure">
+<img src="../assets/images/query_grid_GetStairBetween.png" alt="Get Stair Between" />
+<p class="caption">Get Stair Between</p>
+</div>
+<h3 id="get-opening-point-between-adjacent-cells">Get Opening Point Between Adjacent Cells</h3>
+<p>When two cells are adjacent to each other, there might be a constraint on how we can traverse through them. There might be a height variation, or there might be a wall between the cells. In that case, the only valid way to move across is through the stair or a door repectively. This function calculates and returns the correct world position. This position lies in the edge of the two cells. If there is no barrier between the two cells (doors / stairs) a point in the center of the edge is returned</p>
+<div class="figure">
+<img src="../assets/images/query_grid_GetOpeningPointBetweenAdjacentCells.png" alt="Get Opening Point Between Adjacent Cells" />
+<p class="caption">Get Opening Point Between Adjacent Cells</p>
+</div>
+<p>This function is used in the path demo to correctly place the spline through the doors and stairs</p>
+<div class="figure">
+<img src="../assets/images/query_grid_path.jpg" alt="Query path between two cells" />
+<p class="caption">Query path between two cells</p>
+</div>
+<h3 id="get-adjacent-cells-on-edge">Get Adjacent Cells On Edge</h3>
+<div class="figure">
+<img src="../assets/images/query_grid_GetAdjacentCellsOnEdge.png" alt="Get Adjacent Cells On Edge" />
+<p class="caption">Get Adjacent Cells On Edge</p>
+</div>
+<p>You can use this function in a selector logic of a marker that is on the edge (e.g. Walls / Fence). This function returns the cells adjacent to the marker. You can use it to decorate your walls / fence selectively. E.g. do no spawn lights on walls of an empty side, or have a different art style when a wall is shared by two rooms</p>
+<h3 id="is-near-marker">Is Near Marker</h3>
+<div class="figure">
+<img src="../assets/images/query_grid_IsNearMarker.png" alt="Is Near Marker" />
+<p class="caption">Is Near Marker</p>
+</div>
+<p>The function returns true if a marker with the specified name is found nearby. You specify the distance to search and the marker name.</p>
+<p>This function is useful if you don’t want to place blocking items near doors / stairs.</p>
+<p><img src="../assets/images/query_grid_near_marker_1.png" alt="Query System" /> <img src="../assets/images/query_grid_near_marker_2.png" alt="Query System" /></p>
+<h1 id="spawn-logic">Spawn Logic</h1>
+<p>Spawn Logics are blueprints that are attached to visual nodes and are executed whenever that visual item (mesh, actor, particle system, light etc) is spawned into the scene</p>
+<p>These are great for initializing blueprints (or randomizing them). Some use cases include randomizing the colors of the lights that spawn from a light node, or you can use it to initialize your blueprints spawned from the actor nodes</p>
+<p>You can attach a spawn logic to any visual node (e.g. mesh node, light node, particle system node, actor node etc)</p>
+<p>Set the <em>Use Spawn Logic</em> flag and choose your spawn logic blueprint</p>
+<div class="figure">
+<img src="../assets/images/spawn_logic_detail.png" alt="Spawn Logic" />
+<p class="caption">Spawn Logic</p>
+</div>
+<h2 id="create-spawn-logic">Create Spawn Logic</h2>
+<div class="figure">
+<img src="../assets/images/spawn_logic_create.png" alt="Spawn Logic" />
+<p class="caption">Spawn Logic</p>
+</div>
+<p>Create a new blueprint class and pick DungeonSpawnLogic class as the parent</p>
+<h2 id="define-spawn-logic">Define Spawn Logic</h2>
+<p>Open your blueprint and override the <em>OnItemSpawn</em> function.</p>
+<div class="figure">
+<img src="../assets/images/spawn_logic_override.png" alt="Spawn Logic" />
+<p class="caption">Spawn Logic</p>
+</div>
+<p>Get the reference of the spawn actor and cast it to the type you are expecting. Since this logic was attached to a mesh node, it is cast to a static mesh and customizations can be applied to it <img src="../assets/images/spawn_logic_override2.png" alt="Spawn Logic" /></p>
+<p>Another blueprint that was attached to a point light. Since we expect a point light, we cast to the correct type and change the color <img src="../assets/images/spawn_logic_override3.png" alt="Spawn Logic" /></p>
+<h1 id="event-listeners">Event Listeners</h1>
+<p>Event listeners are blueprints that get notified on various dungeon events. These are great for pre / post initializations</p>
+<h2 id="creation">Creation</h2>
+<p>Create a Event listener blueprint by choosing <code>DungeonEventListener</code> as the base class <img src="../assets/images/event_listener_create.png" alt="Event Listener" /></p>
+<p>Override any of the function events to get notified. This function will be called by Dungeon Architect if your blueprint is registered with the Dungeon actor <img src="../assets/images/event_listener_create2.png" alt="Event Listener" /></p>
+<h2 id="registration">Registration</h2>
+<p>You need to register this blueprint with the dungeon actor to get its event notifications</p>
+<p>Select the Dungeon Actor and Navigate to the <code>Advanced</code> category in the Details tab and choose your blueprint class <img src="../assets/images/event_listener_create3.png" alt="Event Listener" /></p>
+<h2 id="event-callbacks">Event Callbacks</h2>
+<p>Your blueprint can hook into various events of the dungeon build / destroy phase</p>
+<h3 id="on-pre-dungeon-build">On Pre Dungeon Build</h3>
+<p>This is called before the dungeon is built</p>
+<h3 id="on-dungeon-layout-built">On Dungeon Layout Built</h3>
+<p>This is called after the dungeon layout is built in memory. At this stage, no markers are emitted on the scene and nothing is spawned. However, the layout is available in the dungeon model if you’d like to view or modify it</p>
+<h3 id="on-markers-emitted">On Markers Emitted</h3>
+<p>This event is called after all the markers are emitted in the scene. This event is also called right before the Theming engine is executed. So this event gives you an oppertunity to modify the low markers themselves</p>
+<p>This could be useful for automatically clamping dungeon items on a landscape or to apply some filter on the markers like the one shown below (see quick start guide for an example)</p>
+<div class="figure">
+<img src="../assets/images/event_listener_filter.jpg" alt="Event Listener" />
+<p class="caption">Event Listener</p>
+</div>
+<h3 id="on-post-dungeon-build">On Post Dungeon Build</h3>
+<p>This is called after the dungeon is fully built</p>
+<h3 id="on-pre-dungeon-destroy">On Pre Dungeon Destroy</h3>
+<p>This is called right before the dungeon is about to be destroyed</p>
+<h3 id="on-dungeon-destroyed">On Dungeon Destroyed</h3>
+<p>This is called after the dungeon is fully destroyed</p>
+<h1 id="landscape-transformer">Landscape Transformer</h1>
+<p>Using the Landscape Transformer, you can modify a landscape’s height and weights (textures) around the dungeon’s layout</p>
+<p>The landscape transformer is implemented as a event listener, so you’ll need to register it in the Dungeon actor’s event listener list under the Advanced category</p>
+<div class="figure">
+<img src="../assets/images/landscape_transformer.png" alt="Landscape Transformer" />
+<p class="caption">Landscape Transformer</p>
+</div>
+<p>After setting the landscape transformer, expand it and set the Landscape you’d wish to modify</p>
+<div class="figure">
+<img src="../assets/images/landscape_transformer2.png" alt="Landscape Transformer" />
+<p class="caption">Landscape Transformer</p>
+</div>
+<p>Under the Layers array, add two entries</p>
+<p>The first entry should be the Layer Info for filling the entire area The second entry is for the inner path way.</p>
+<p>You would have already created these layer info assets while creating the landscape and setting up the material</p>
+<p>To find where you layer info is, Navigate to the Landscape tab &gt; Paint section. There you’d see entries for each layer that was defined in your material. If you didn’t create a layer info yet, create one or click the Find icon to find where it is. Then assign the appropriate layer</p>
+<div class="figure">
+<img src="../assets/images/landscape_transformer_layer.png" alt="Landscape Transformer" />
+<p class="caption">Landscape Transformer</p>
+</div>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/9MI9IzNytuY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h1 id="advanced">Advanced</h1>
+<h2 id="using-multiple-dungeons">Using Multiple Dungeons</h2>
+<p>You can setup multiple dungeons in your scene. A dungeon is generated relative to the position of the dungeon actor</p>
+<h2 id="blend-with-existing-art">Blend with existing art</h2>
+<p>Blend procedural dungeons with your existing level art by creating constraints using platform volumes so they make an entrace from your static artist designed levels to your dungeons</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/81W6Rhwmhfc?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<p>In the above video, the central area was created by the artist and doors leading to the left and right sides. After dropping two dungeons actors into the scene, they were forced to connect to these artist generated entrace using a platform volume and marker replacement volume (to force create a door)</p>
 <div id="footer">
   &copy; 2015 <a href="http://coderespawn.com/">Code Respawn Technologies Pvt Ltd</a>
 </div>
