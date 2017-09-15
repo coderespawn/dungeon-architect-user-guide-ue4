@@ -3,7 +3,7 @@ Navigation
 
 Unreal Engine supports runtime navigation generation.   However, a flag needs to be set in the projects setting.
 
-Navigate to `Edit > Project Settings > Navgation Mesh > Runtime > Dynamic
+Navigate to `Edit > Project Settings > Navgation Mesh > Runtime > Dynamic`
 
 ![Runtime Navigation Mesh Generation](../assets/images/navmesh_1.png)
 
