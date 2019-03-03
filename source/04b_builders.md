@@ -126,53 +126,19 @@ Snap Builder
 ------------
 The snap builder allows you to stitch together custom designed rooms.   This gives the artist full control on how an individual room looks like.  These rooms are called Snap Modules.
 
-Snap Modules are connected together through connection points called Snap Connections.   Your modules will have various connection points (usually at the doors)
+Full documentation here
 
-Check the quick start guide with a demo map with 20+ unique rooms 
+https://coderespawn.github.io/dungeon-architect-snap-map-user-guide-ue4/
 
-This builder is a work in progress and is not recommended for use in production yet
+YOUTUBE(woKkR6P_sHY)
 
-YOUTUBE(pKeHsHekjpE)
+YOUTUBE(R5Lcx9YSYpo)
+
+YOUTUBE(9Crl9tGkHXA)
 
 ### Layout
 A simple layout is used for now where there is a linear path from start to end and a few side branches along the way.  In the later updates, there will be multiple implementations of the layout algorithms and you should be able to swap between them
 
-
-###Configuration
-
-![Snap Dungeon Configuration](../assets/images/dungeon_config_snap_v2.png)
-
-
-* **Seed**: Changing this number would completely change the layout of the dungeon.  This is the base random number seed that is used to build the dungeon
-
-* **Modules**: Here is where you register your room module assets.   DA would use these modules as building blocks to build your dungeon
-
-* **Start Modules**: If specified, a module from this list would be used as the starting room *[Not used for now]*
-
-* **End Modules**: If specified, a module from this list would be used as the ending room *[Not used for now]*
-
-* **Branch End Modules**: If specified, a module from this list would be used as the branch end room *[Not used for now]*
-
-* **Main Branch Size**: The size of the main branch from start to end (in module count)
-
-* **Collision Test Contraction**: When the modules are stitched together, DA makes sure that the newly spawned module would not overlap with any of the existing spawned module.  Setting this value to 0 would not spawn a module in locations with even the slightest overlap.  Setting to 100 units for e.g., would tolerate an overlap of 100 Unreal units
-
-* **Instanced**: Use mesh instancing for lower batch count  *[Not used for now]*
-
-* **Max Build Time Per Frame**: The dungeon can be built over multiple frames so as to not hang the game (or the editor UI) while it is being built.  This value determines how much time is spent on each frame to build the dungeon.  Setting it to 0 would build the entire dungeon synchronously in a single frame.  Settting to 33ms for eg, would build it over multiple frames.  You get a callback notification when the dungeon build is complete
-
-
-###Module Creation
-Any normal actor blueprint can be used as a snap module.   Since it is difficult to design the module inside the blueprint viewport, it is easier to create your room module in a separate level then convert it to a blueprint
-
-###Snap Connections
-You modules need a way to connect to other modules.   This is done using Snap Connections.  Create a new snap connection blueprint by choosing SnapConnection as the base class
-
-![Snap Connection](../assets/images/snap_connection.png)
-
-Drop this snap connection blueprints in your module blueprint and position them accordingly.
-
-This is an experimental feature and will change in the future
 
 Isaac Builder
 -------------
